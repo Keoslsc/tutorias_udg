@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Role;
+use App\Convocatory;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -31,7 +33,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/login';
+    protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -55,30 +57,28 @@ class RegisterController extends Controller
         return $this->registered($request, $user)
                         ?: redirect($this->redirectPath());
     }
-    
-    public function redirectTo()
+
+    public function registerTutor(Request $request)
     {
-        // User role
-        $role = Auth::user()->role; 
+        $this->validator($request->all())->validate();
+         $this->createTutor($request->all());
+        return back()->with('Registered', 'You have registered as a tutor, the administrator confirms your request');
         
-        // Check user role
-        switch ($role) 
-        {
-            case 'admin':
-                    return route('home_admin');
-                break;
-            case 'tutor':
-                    return route('home_tutor');
-                break; 
-            default:
-                    return route('home_student'); 
-                break;
-        }
+        
     }
+    
 
     public function showRegistrationTutorForm()
     {
-        return view('auth.register_tutor');
+        $convocatory = Convocatory::ShowActive();
+        if($convocatory)
+        {
+            return view('auth.register');
+        }
+        else
+        {
+            abort(404, "This page has not been created yet");
+        }
     }
 
     
@@ -93,8 +93,17 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:6', 'confirmed']
+        ]);
+    }
+
+    protected function validatorTutor(array $data)
+    {
+        return Validator::make($data, [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
-            'student_code' => ['required', 'max:50', 'min:9'],
+            'id_convocatory' => ['required', 'number', 'exists:convocatories']
         ]);
     }
 
@@ -106,11 +115,32 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'student_code' => $data['student_code'],
+            'password' => bcrypt($data['password']),
+            'status' => 1
         ]);
+        $user
+            ->roles()
+            ->attach(Role::where('name', 'student')->first());
+        return $user;
+    }
+
+    protected function createTutor(array $data)
+    {
+        $user = User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => bcrypt($data['password']),
+            'status' => 2
+        ]);
+        $user
+            ->roles()
+            ->attach(Role::where('name', 'tutor')->first());
+        $user
+            ->convocatories()
+            ->attach(Convocatory::where('id', $data['convocatory_id'])->first());
+        return $user;
     }
 }

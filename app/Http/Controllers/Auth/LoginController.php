@@ -39,22 +39,5 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
-
-    protected function authenticated(Request $request, $user)
-    {
-        $role = $user->role;
-        switch ($role) 
-        {
-            case 'admin':
-                    return redirect()->route('home_admin');
-                break;
-            case 'tutor':
-                    return redirect()->route('home_tutor');
-                break; 
-            default:
-                    return redirect()->route('home_student'); 
-                break;
-        }
-    }
     
 }

@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
-@section('content')
-<div class="container animated fadeIn delay-.9s">
-    <div class="row justify-content-center m-5">
-        <div class="col col-login mx-auto">
+@section('auth')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
             <form method="POST" action="{{ route('password.update') }}" class="card">
                 @csrf
 

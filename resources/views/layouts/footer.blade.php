@@ -1,24 +1,13 @@
-<nav class="navbar navbar-expand-lg navbar-light animated fadeIn delay-.8s" style="background-color:#000000;">
+@guest
 
-    @guest
-        <footer class="sticky-footer">
-            <div class="container my-auto">
-                <div class ="copyright text-center my-auto">
-                    #footer {
-                        text-align: center; 
-                    }
-                    <span>Copyright Digital People </span>
-                </div>
-            </div>
-        </footer> 
-    @endguest
-
- </nav>
-
-<footer class="sticky-footer">
-    <div class="container my-auto">
-        <div class ="copyright text-center my-auto">
-            <span>Copyright bla bla </span>
+<footer class="footer" >
+@else
+<footer class="app-footer">
+@endguest
+    <div class="container">
+        <div class="col-12 col-lg-auto mt-3 mt-lg-0 text-center">
+            Copyright © 2019 <a href=".">{{ config('app.name', 'Laravel') }}</a>. Program by Digital People All rights reserved.
+        </div> 
         </div>
     </div>
-</footer> 
+</footer>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\VerifiesEmails;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class VerificationController extends Controller
 {
@@ -26,7 +27,7 @@ class VerificationController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/login';
+    protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -40,22 +41,11 @@ class VerificationController extends Controller
         $this->middleware('throttle:6,1')->only('verify', 'resend');
     }
 
-    public function redirectTo(){
-        
-        // User role
-        $role = Auth::user(); 
-        
-        // Check user role
-        switch ($role) {
-            case 'admin':
-                    return route('home_admin');
-                break;
-            case 'tutor':
-                    return route('home_tutor');
-                break; 
-            default:
-                    return route('home_student'); 
-                break;
-            }
+    public function showTutor(Request $request)
+    {
+        return $request->user()->hasVerifiedEmail()
+                        ? redirect($this->redirectPath())
+                        : view('auth.verify_tutor');
     }
+
 }
