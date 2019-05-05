@@ -94,4 +94,12 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->HasOne('App\Profile');
     }
+
+    //Modules
+    public function modules()
+    {
+        return $this->belongsToMany('App\Module')->withTimestamps();
+    }
+
+    
 }

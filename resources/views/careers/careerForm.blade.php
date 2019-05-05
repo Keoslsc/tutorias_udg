@@ -23,13 +23,7 @@
 
                             <div class="row">
                                 
-                                @if(session()->has('success'))
-                                <div class="col-md-12 py-4">
-                                    <div class="alert alert-info" role="alert">
-                                        {{ session()->get('success') }}
-                                    </div>
-                                    </div>
-                                @endif
+                                @include('messages.messages')
                             
                                 <div class="col-md-6 col-lg-6">
                                     <div class="form-group">

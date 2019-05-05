@@ -23,7 +23,7 @@ Route::resource('convocatory', 'ConvocatoryController')->middleware('verified');
 //Tutor
 Route::get('register/tutor',['uses' => 'Auth\RegisterController@showRegistrationTutorForm'])->name('register.tutor');
 Route::post('register/tutor',['uses' => 'Auth\RegisterController@registerTutor'])->name('register.tutor');
-Route::get('verify/tutor', 'Auth\VerificationController@showTutor')->name('verification.tutor')->middleware('verified');
+Route::get('verify/tutor', 'Auth\VerificationController@showTutor')->name('verification.tutor');
 
 
 //Profile
@@ -31,12 +31,17 @@ Route::resource('profile', 'ProfileController')->middleware('verified');
 
 //Division
 Route::resource('division', 'DivisionController')->middleware('verified');
+Route::get('division/modules/{division}', 'DivisionController@IndexModulesFromDivision')->middleware('verified')->name('divisions.modules');
 
 //Career
 Route::resource('career', 'CareerController')->middleware('verified');
 
 //Module
 Route::resource('module', 'ModuleController')->middleware('verified');
+
+//Subscription
+Route::post('subscription',['uses' => 'SubscriptionController@store'])->name('subscription.module.store');
+Route::delete('unsubscribe',['uses' => 'SubscriptionController@destroy'])->name('subscription.module.destroy');
 
 Auth::routes(['verify' => true]);
 

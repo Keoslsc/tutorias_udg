@@ -7,6 +7,9 @@
             <div class="card-deck">
                 <div class="card p-4">
                     <div class="card-body">
+                        <div class="row">
+                            @include('messages.messages')
+                        </div>
                         <form method="POST" action="{{ route('login') }}" >
                             <h1>Login</h1>
                             <p>Sign In to Your account</p>

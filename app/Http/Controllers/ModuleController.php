@@ -27,7 +27,7 @@ class ModuleController extends Controller
      */
     public function index()
     {
-        $modules = Module::all();
+        $modules = Module::with(['division'])->get();
         return view('modules.moduleIndex', compact('modules'));
     }
 

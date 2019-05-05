@@ -61,9 +61,8 @@ class RegisterController extends Controller
     public function registerTutor(Request $request)
     {
         $this->validator($request->all())->validate();
-         $this->createTutor($request->all());
-        return back()->with('Registered', 'You have registered as a tutor, the administrator confirms your request');
-        
+        $this->createTutor($request->all());
+        return redirect()->route('login')->with('registered', 'You have registered as a tutor, the administrator confirms your request');
         
     }
     

@@ -26,7 +26,7 @@
                         <h4>About me: </h4>
                         <h5 class="card-text"><i class="icon-calendar"></i><strong> Birthday: </strong> {{ Auth::user()->profile->date }}</h5>
                         <h5 class="card-text"><i class="icon-heart"></i><strong> Bio: </strong> {{ Auth::user()->profile->about_me }}</h5>
-                        <h5 class="card-text"><i class="icon-screen-smartphone"></i><strong> Cellprone: </strong> {{ Auth::user()->profile->cellphone }}</h5>
+                        <h5 class="card-text"><i class="icon-screen-smartphone"></i><strong> Cellphone: </strong> {{ Auth::user()->profile->cellphone }}</h5>
                         <h5 class="card-text"><i class="icon-chemistry"></i><strong> Career: </strong> {{ Auth::user()->profile->career->name }}</h5>
                         <h5 class="card-text"><i class="icon-people"></i><strong> Gender: </strong> {{ Auth::user()->profile->G }}</h5>
                         <hr>
