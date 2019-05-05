@@ -9,13 +9,7 @@
             </div>
         </div>
         <div class="card">
-        @if(session()->has('success'))
-        <div class="col-md-12 py-4 text-center">
-            <div class="alert alert-success" role="alert">
-                {{ session()->get('success') }} <i class="icon-check"></i>
-            </div>
-            </div>
-        @endif
+        @include('messages.messages')
         @if(isset($profile))
             <form action="{{ route('profile.update', $profile->user_id) }}" method="POST" class="card-body" enctype="multipart/form-data">
                 <input type="hidden" name="_method" value="PATCH">
@@ -115,7 +109,9 @@
                     <select name="career_id" id="career_id" class="form-control{{ $errors->has('career_id') ? ' is-invalid' : '' }}">
                         <option value=""></option>
                         @foreach ($careers as $career)
-                            <option value="{{ $career->id }}" {{ isset($profile) ? $profile->career_id == $career->id ? 'selected' : '' : '' }}>{{ $career->name }}</option>
+                            @if($career->status)
+                                <option value="{{ $career->id }}" {{ isset($profile) ? $profile->career_id == $career->id ? 'selected' : '' : '' }}>{{ $career->name }}</option>
+                            @endif
                         @endforeach
                     </select>
 

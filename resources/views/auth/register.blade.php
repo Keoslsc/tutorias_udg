@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-5">
                 <div class="card mx-4">
-                    @if ($convocatory && request()->is('register/tutor'))
+                    @if (isset($convocatory) && request()->is('register/tutor'))
                         <form method="POST" action="{{ route('register.tutor') }}">
                     @else  
                         <form method="POST" action="{{ route('register') }}">
@@ -23,13 +23,8 @@
                                     <label for="text_convocatoria" class="col-form-label">{{ __('Convocatory: ') }}</label>   
                                     <textarea class="form-control" name="text_convocatoria" id="text_convocatoria" cols="30" rows="2" disabled style="resize: none;">{{$convocatory->written}}</textarea>
                                 </div>
-                                @if(session()->has('Registered'))
-                                <div class="form-group">
-                                    <div class="alert alert-success" role="alert">
-                                        {{ session()->get('Registered') }}
-                                    </div>
-                                </div>
-                                @endif
+                                
+                            @include('messages.messages')
                             @else  
                                 <div class="card-title text-center">
                                     <h4>{{ __('Student Register') }}</h4>
