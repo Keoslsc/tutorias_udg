@@ -43,6 +43,13 @@ Route::resource('module', 'ModuleController')->middleware('verified');
 Route::post('subscription',['uses' => 'SubscriptionController@store'])->name('subscription.module.store');
 Route::delete('unsubscribe',['uses' => 'SubscriptionController@destroy'])->name('subscription.module.destroy');
 
+//Post
+Route::post('createPost',['uses' => 'PostController@store'])->name('post.store');
+Route::get('createPost',['uses' => 'PostController@create'])->name('post.create')->middleware('verified');
+Route::get('viewPost',['uses' => 'PostController@index'])->name('post.index')->middleware('verified');
+
+
+
 Auth::routes(['verify' => true]);
 
 

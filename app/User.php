@@ -101,5 +101,10 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsToMany('App\Module')->withTimestamps();
     }
 
+    //Posts
+    public function posts()
+    {
+        return $this->hasMany('App\Post');
+    }
     
 }

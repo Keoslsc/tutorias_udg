@@ -11,10 +11,10 @@
         <div class="card">
         @include('messages.messages')
         @if(isset($profile))
-            <form action="{{ route('profile.update', $profile->user_id) }}" method="POST" class="card-body" enctype="multipart/form-data">
+            <form action="{{ route('profile.create', $profile->user_id) }}" method="POST" class="card-body" enctype="multipart/form-data">
                 <input type="hidden" name="_method" value="PATCH">
         @else
-            <form action="{{ route('profile.store') }}" method="POST" class="card-body" enctype="multipart/form-data">
+            <form action="{{ route('profile.create') }}" method="POST" class="card-body" enctype="multipart/form-data">
         @endif
                 @csrf
                 
