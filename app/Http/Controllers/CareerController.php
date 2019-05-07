@@ -28,7 +28,7 @@ class CareerController extends Controller
      */
     public function index()
     {
-        $careers = Career::all();
+        $careers = Career::with(['division'])->get();
         return view('careers.careerIndex', compact('careers'));
     }
 

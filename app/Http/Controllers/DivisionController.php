@@ -25,8 +25,15 @@ class DivisionController extends Controller
      */
     public function index()
     {
-        $divisions = Division::all();
+        $divisions = Division::all()->toJson();
         return view('divisions.divisionIndex', compact('divisions'));
+    }
+
+    public function IndexModulesFromDivision(Request $request, Division $division)
+    {
+        $request->user()->authorizeRoles(['admin', 'student', 'tutor']);  
+        $modules = $division->modules;
+        return view('divisions.modulesFromDivision', compact('modules'));
     }
 
     /**

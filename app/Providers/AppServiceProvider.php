@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Division;
 use App\Convocatory;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
@@ -36,7 +37,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         view()->composer('home', function($view) {
-            $view->with('profile', Auth::user()->profile);
+            $view->with('divisions', Division::all());
         });
     }
 }

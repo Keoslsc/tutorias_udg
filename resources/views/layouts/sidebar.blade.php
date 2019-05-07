@@ -4,14 +4,17 @@
 
             <li class="nav-item">
                 <a class="nav-link active" href="{{ route('home') }}">
-                    <i class="nav-icon icon-speedometer"></i> Dashboard
+                    <i class="nav-icon icon-home"></i> Home
                 </a>
             </li>
-            
+        
             @if(Auth::user()->hasRole('admin'))
             <!-- Admin -->
-
-
+                <li class="nav-item">
+                    <a class="nav-link active" href="{{ route('home') }}">
+                        <i class="nav-icon icon-speedometer"></i> Dashboard
+                    </a>
+                </li>
                 <!-- Convocatories -->
                 <li class="nav-item nav-dropdown">
                     <a class="nav-link nav-dropdown-toggle" href="#"><i class="nav-icon icon-note"></i> Convocatories</a>
@@ -50,7 +53,7 @@
                     </ul>
                 </li>
 
-                <!-- Divisions -->
+                <!-- Careers -->
                 <li class="nav-item nav-dropdown">
                     <a class="nav-link nav-dropdown-toggle" href="#"><i class="nav-icon icon-notebook"></i> Careers</a>
                     <ul class="nav-dropdown-items">
@@ -70,7 +73,7 @@
                 </li>
 
 
-                <!-- Divisions -->
+                <!-- Modules -->
                 <li class="nav-item nav-dropdown">
                     <a class="nav-link nav-dropdown-toggle" href="#"><i class="nav-icon icon-note"></i> Modules</a>
                     <ul class="nav-dropdown-items">
@@ -93,6 +96,27 @@
                 
             @elseif(Auth::user()->hasRole('tutor'))
             <!-- Tutor -->
+
+                <!-- Posts -->
+                <li class="nav-item nav-dropdown">
+                    <a class="nav-link nav-dropdown-toggle" href="#"><i class="nav-icon icon-note"></i> Posts</a>
+                    <ul class="nav-dropdown-items">
+
+                        <!-- Create -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('post.create') }}">
+                            <i class="nav-icon icon-plus"></i> Create</a>
+                        </li>
+
+                        <!-- View -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('post.index') }}">
+                            <i class="nav-icon icon-plus"></i> View </a>
+                        </li>
+
+                    </ul>
+                </li>
+
             @else
             <!-- Student -->
             @endif

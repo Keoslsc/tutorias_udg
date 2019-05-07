@@ -14,4 +14,15 @@ class Module extends Model
     {
         return $this->belongsTo('App\Division');
     }
+
+    public function subscriptions()
+    {
+        return $this->hasMany('App\Subscription');
+    }
+
+    //Users
+    public function users()
+    {
+        return $this->hasMany('App\User');
+    }
 }

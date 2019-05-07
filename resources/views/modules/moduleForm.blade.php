@@ -11,9 +11,8 @@
                         <input type="hidden" name="_method" value="PATCH">
                         <h4 class="m-2 text-center">Change data for module : {{ $module->id }}</h4>
                     @else
-                        <form action="{{ route('module.store') }}" method="POST"class="card" >
+                        <form action="{{ route('module.store') }}" method="POST" class="card" >
                     @endif
-                    <form method="POST" action="{{ route('module.store') }}" class="card">
                         @csrf
                         <div class="card-body">
                         
@@ -23,13 +22,7 @@
 
                             <div class="row">
                                 
-                                @if(session()->has('success'))
-                                <div class="col-md-12 py-4">
-                                    <div class="alert alert-info" role="alert">
-                                        {{ session()->get('success') }}
-                                    </div>
-                                    </div>
-                                @endif
+                                @include('messages.messages')
                             
                                 <div class="col-md-6 col-lg-6">
                                     <div class="form-group">

@@ -27,7 +27,7 @@ class ModuleController extends Controller
      */
     public function index()
     {
-        $modules = Module::all();
+        $modules = Module::with(['division'])->get();
         return view('modules.moduleIndex', compact('modules'));
     }
 
@@ -55,6 +55,7 @@ class ModuleController extends Controller
         $this->validatorStore($request->all())->validate();
         $module = new Module($request->all());
         $module->save();
+        
         return back()->with('success', 'Data inserted Successfully');
     }
 
