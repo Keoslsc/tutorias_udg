@@ -37,7 +37,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         view()->composer('home', function($view) {
-            $view->with('divisions', Division::all());
+            $view->with('divisions', Division::with(['modules'])->get());
         });
     }
 }

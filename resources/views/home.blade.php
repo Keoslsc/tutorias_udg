@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    @if (Auth::user()->status == 1)
+    @if ($user->status == 1)
 
-        @if (!isset(Auth::user()->profile))
+        @if (!isset($user->profile))
             @include('profiles.completeProfile')
         @endif 
 
-        @if(Auth::user()->hasRole('admin'))
+        @if($user->hasRole('admin'))
         @else
             @include('divisions.divisionIndexHome', $divisions)
         @endif
