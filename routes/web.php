@@ -48,6 +48,8 @@ Route::post('createPost',['uses' => 'PostController@store'])->name('post.store')
 Route::get('createPost',['uses' => 'PostController@create'])->name('post.create')->middleware('verified');
 Route::get('viewPost',['uses' => 'PostController@index'])->name('post.index')->middleware('verified');
 
+//File
+Route::resource('file', 'FileController', ['except' => ['create', 'edit', 'update']]);
 
 
 Auth::routes(['verify' => true]);
