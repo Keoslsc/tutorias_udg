@@ -54,6 +54,22 @@
                                     @endif
                                 </div>
 
+                                <!-- File -->
+                                {!! Form::open(['route' => 'file.store', 'files' => true, 'id' => 'form-file-upload']) !!}
+                                <!-- <a class="nav-link" href="{{ route('file.store') }}"> -->
+                                <div class="form-group"> 
+                                    <label for="files" class="col-form-label">Select files:</label>
+                                    {!! Form::file('files[]', ['multiple' => true], ['class' => 'form-control']) !!}
+                                </div>
+
+                                {!! Form::submit('Upload', ['class' => 'btn btn-success']) !!}
+
+                                @if (isset($modelo_id) && isset($modelo_type))
+                                    {!! Form::hidden('modelo_id', $modelo_id) !!}
+                                    {!! Form::hidden('modelo_type', $modelo_type) !!}
+                                @endif
+
+                                {!! Form::close() !!}
 
                                 <!-- Botones -->
                                 <div class="col-md-5">
