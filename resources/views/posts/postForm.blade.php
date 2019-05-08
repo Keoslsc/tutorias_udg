@@ -55,25 +55,23 @@
                                 </div>
 
                                 <!-- File -->
-                                {!! Form::open(['route' => 'file.store', 'files' => true, 'id' => 'form-file-upload']) !!}
-                                <!-- <a class="nav-link" href="{{ route('file.store') }}"> -->
+                                <form method="post" action="{{ route('file.store') }}" enctype="multipart/form-data">
                                 <div class="form-group"> 
                                     <label for="files" class="col-form-label">Select files:</label>
-                                    {!! Form::file('files[]', ['multiple' => true], ['class' => 'form-control']) !!}
+                                    <input type="file" name="files[]" class="form-control">
                                 </div>
 
-                                {!! Form::submit('Upload', ['class' => 'btn btn-success']) !!}
-
+                                <button class="btn btn-success" type="button">Add</button>
                                 @if (isset($modelo_id) && isset($modelo_type))
                                     {!! Form::hidden('modelo_id', $modelo_id) !!}
                                     {!! Form::hidden('modelo_type', $modelo_type) !!}
                                 @endif
-
-                                {!! Form::close() !!}
+                                </form>
+                                
 
                                 <!-- Botones -->
                                 <div class="col-md-5">
-                                    <a href="{{ route('post.store') }}" class="btn btn-danger btn-block">
+                                    <a href="{{ route('home') }}" class="btn btn-danger btn-block">
                                             {{ __('Cancel') }}
                                     </a>
                                 </div>
