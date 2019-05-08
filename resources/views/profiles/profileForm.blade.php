@@ -19,9 +19,9 @@
                 @csrf
                 
                 <input type="hidden" name="user_id" value={{ Auth::user()->id }}>
-                <div class="row justify-content-center">
-                    <div class="col-md-4 m-2">
-                        <img class="img-circle" src="{{ Storage::url(Auth::user()->avatar) }}" alt="{{ Auth::user()->name }}" >
+                <div class="card-title row justify-content-center">
+                    <div class="col-5 m-2">
+                        <img class="img-avatar" src="{{ Storage::url(Auth::user()->avatar) }}" alt="{{ Auth::user()->name }}" >
                     </div>
                 </div>
 
@@ -142,11 +142,11 @@
 
                 <!-- Buttons -->
                 <div class="row">
-                    <div class="col-md-5">
+                    <div class="col-5">
                             <a href="{{ route('profile.index') }}" class="btn btn-danger btn-block">Cancel</a>
                     </div>
-                    <div class="col-md-2"></div>
-                    <div class="col-md-5">
+                    <div class="col-2"></div>
+                    <div class="col-5">
                         <button type="submit" class="btn btn-primary btn-block">Save</button>
                     </div>
                 </div>

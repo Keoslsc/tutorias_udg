@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    @if (count($modules) > 0)
-        <h2 class="text-center">Modules  of {{ $modules[0]->division->description }}</h2>
+    @if (count($division->modules) > 0)
+        <h2 class="text-center">Modules  of {{ $division->description }}</h2>
         <div class="row justify-content-center">
             <div class="col-11">
                 @include('messages.messages')
                 <div class="card-columns">
-                    @foreach ($modules as $module)
+                    @foreach ($division->modules as $module)
                         @if($module->status)
                             <div class="card" style="max-width: 18rem;">
                                 <div class="card-body">
