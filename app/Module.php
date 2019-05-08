@@ -25,4 +25,10 @@ class Module extends Model
     {
         return $this->hasMany('App\User');
     }
+
+    //Modules
+    public function modules()
+    {
+        return $this->morphMany('App\File', 'modelo');
+    }
 }

@@ -55,6 +55,7 @@ class ModuleController extends Controller
         $this->validatorStore($request->all())->validate();
         $module = new Module($request->all());
         $module->save();
+        
         return back()->with('success', 'Data inserted Successfully');
     }
 
