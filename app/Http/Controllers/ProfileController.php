@@ -31,6 +31,11 @@ class ProfileController extends Controller
         return view('profiles.profileForm', compact('profile', 'careers'));
     }
 
+    public function show(Profile $profile)
+    {
+        return view('profiles.profileForm', compact('profile'));
+    }
+
     public function create()
     {
         $careers = Career::all();
@@ -42,7 +47,7 @@ class ProfileController extends Controller
         $user = User::find($request->user_id);
         $this->validatorProfile($request->all())->validate();
         if(isset($request->avatar)){
-            $user->avatar = $request->file('avatar')->storeAs('public/avatars', $request->user()->id.'.'.$request->avatar->getClientOriginalExtension());
+            $user->uploadImage(request()->file('avatar'), $request->user()->id.'.'.$request->avatar->getClientOriginalExtension());
             $user->save();
         }
         if($user->name != $request->name){
@@ -59,7 +64,7 @@ class ProfileController extends Controller
         $user = User::find($request->user_id);
         $this->validatorEditProfile($request->all())->validate();
         if(isset($request->avatar)){
-            $user->avatar = $request->file('avatar')->storeAs('public/avatars', $request->user()->id.'.'.$request->avatar->getClientOriginalExtension());
+            $user->uploadImage(request()->file('avatar'), 'avatar');
             $user->save();
         }
         if($user->name != $request->name){
