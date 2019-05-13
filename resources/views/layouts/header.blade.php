@@ -11,7 +11,7 @@
     </button>
     <ul class="nav navbar-nav ml-auto">
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle m-2" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                 <img class="img-avatar" src="{{ Storage::url(Auth::user()->avatar) }}">
             </a>
             <div class="dropdown-menu dropdown-menu-right shadow mt-2">

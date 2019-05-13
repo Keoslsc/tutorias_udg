@@ -67,7 +67,8 @@ class ModuleController extends Controller
      */
     public function show(Module $module)
     {
-        //
+        $module->load(['users', 'posts', 'users.profile', 'users.profile.career', 'users.roles']);
+        return view('modules.moduleShow', compact('module'));
     }
 
     /**

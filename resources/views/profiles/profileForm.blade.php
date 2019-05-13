@@ -11,18 +11,20 @@
         <div class="card">
         @include('messages.messages')
         @if(isset($profile))
-            <form action="{{ route('profile.create', $profile->user_id) }}" method="POST" class="card-body" enctype="multipart/form-data">
+            <form action="{{ route('profile.update', $profile->user_id) }}" method="POST" class="card-body" enctype="multipart/form-data">
                 <input type="hidden" name="_method" value="PATCH">
         @else
-            <form action="{{ route('profile.create') }}" method="POST" class="card-body" enctype="multipart/form-data">
+            <form action="{{ route('profile.store') }}" method="POST" class="card-body" enctype="multipart/form-data">
         @endif
                 @csrf
                 
                 <input type="hidden" name="user_id" value={{ Auth::user()->id }}>
-                <div class="card-title row justify-content-center">
-                    <div class="col-5 m-2">
+                <div class="card-title row pb-1">
+                    <div class="col-3"></div>
+                    <div class="col-6 text-center">
                         <img class="img-avatar" src="{{ Storage::url(Auth::user()->avatar) }}" alt="{{ Auth::user()->name }}" >
                     </div>
+                    <div class="col-3"></div>
                 </div>
 
 

@@ -23,8 +23,7 @@ class CreateModulesTable extends Migration
 
         Schema::table('modules', function($table) {
             $table->foreign('division_id')->references('id')->on('divisions')
-            ->onUpdate('cascade');
-            
+            ->onUpdate('cascade');  
         });
     }
 

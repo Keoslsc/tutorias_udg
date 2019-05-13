@@ -4,10 +4,14 @@
     <div class="col-md-6">
             <div class="card">
                 
-                <div class="row justify-content-center">
-                    <div class="col-md-4 m-2">
-                        <img class="img-circle" src="{{ Storage::url(Auth::user()->avatar) }}" alt="{{ Auth::user()->name }}" >
+                <div class="row justify-content-center  py-2">
+
+                    <div class="col-3"></div>
+                    <div class="col-6 text-center">
+                        <img class="img-avatar" src="{{ Storage::url(Auth::user()->avatar) }}" alt="{{ Auth::user()->name }}" >
                     </div>
+                    <div class="col-3"></div>
+                    
                 </div>
 
                 <div class="text-center">
