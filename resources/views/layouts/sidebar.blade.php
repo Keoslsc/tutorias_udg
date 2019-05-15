@@ -97,25 +97,7 @@
             @elseif(Auth::user()->hasRole('tutor'))
             <!-- Tutor -->
 
-                <!-- Posts -->
-                <li class="nav-item nav-dropdown">
-                    <a class="nav-link nav-dropdown-toggle" href="#"><i class="nav-icon icon-note"></i> Posts</a>
-                    <ul class="nav-dropdown-items">
-
-                        <!-- Create -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('post.create') }}">
-                            <i class="nav-icon icon-plus"></i> Create</a>
-                        </li>
-
-                        <!-- View -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('post.index') }}">
-                            <i class="nav-icon icon-plus"></i> View </a>
-                        </li>
-
-                    </ul>
-                </li>
+                
 
             @else
             <!-- Student -->
