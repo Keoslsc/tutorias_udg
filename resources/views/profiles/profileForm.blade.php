@@ -11,18 +11,20 @@
         <div class="card">
         @include('messages.messages')
         @if(isset($profile))
-            <form action="{{ route('profile.create', $profile->user_id) }}" method="POST" class="card-body" enctype="multipart/form-data">
+            <form action="{{ route('profile.update', $profile->user_id) }}" method="POST" class="card-body" enctype="multipart/form-data">
                 <input type="hidden" name="_method" value="PATCH">
         @else
-            <form action="{{ route('profile.create') }}" method="POST" class="card-body" enctype="multipart/form-data">
+            <form action="{{ route('profile.store') }}" method="POST" class="card-body" enctype="multipart/form-data">
         @endif
                 @csrf
                 
                 <input type="hidden" name="user_id" value={{ Auth::user()->id }}>
-                <div class="row justify-content-center">
-                    <div class="col-md-4 m-2">
-                        <img class="img-circle" src="{{ Storage::url(Auth::user()->avatar) }}" alt="{{ Auth::user()->name }}" >
+                <div class="card-title row pb-1">
+                    <div class="col-3"></div>
+                    <div class="col-6 text-center">
+                        <img class="img-avatar" src="{{ Storage::url(Auth::user()->avatar) }}" alt="{{ Auth::user()->name }}" >
                     </div>
+                    <div class="col-3"></div>
                 </div>
 
 
@@ -30,7 +32,7 @@
 
                  <!-- Picture -->
                  <div class="input-group mb-3">
-                    <input id="avatar" type="file" class="form-control-file{{ $errors->has('avatar') ? ' is-invalid' : '' }}" name="avatar" autofocus>
+                    <input id="avatar" type="file" class="form-control-file{{ $errors->has('avatar') ? ' is-invalid' : '' }}" name="avatar" autofocus accept="image/*">
                     @if ($errors->has('avatar'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('avatar') }}</strong>
@@ -142,11 +144,11 @@
 
                 <!-- Buttons -->
                 <div class="row">
-                    <div class="col-md-5">
+                    <div class="col-5">
                             <a href="{{ route('profile.index') }}" class="btn btn-danger btn-block">Cancel</a>
                     </div>
-                    <div class="col-md-2"></div>
-                    <div class="col-md-5">
+                    <div class="col-2"></div>
+                    <div class="col-5">
                         <button type="submit" class="btn btn-primary btn-block">Save</button>
                     </div>
                 </div>

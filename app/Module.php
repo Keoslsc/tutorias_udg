@@ -10,25 +10,27 @@ class Module extends Model
         'id', 'name', 'division_id', 'status', 'created_at', 'updated_at'
     ];
 
+    //Division
     public function division()
     {
         return $this->belongsTo('App\Division');
     }
 
-    public function subscriptions()
-    {
-        return $this->hasMany('App\Subscription');
-    }
-
     //Users
     public function users()
     {
-        return $this->hasMany('App\User');
+        return $this->belongsToMany('App\User');
     }
 
-    //Modules
-    public function modules()
+    //Files
+    public function files()
     {
         return $this->morphMany('App\File', 'modelo');
+    }
+
+    //Posts
+    public function posts()
+    {
+        return $this->hasMany('App\Post');
     }
 }

@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Post;
 use App\User;
+use App\Module;
 use Illuminate\Support\Facades\Validator;
 
 use Illuminate\Http\Request;
@@ -14,11 +16,9 @@ class PostController extends Controller
         $this->middleware('auth');
     }
 
-    public function create(Request $request)
+    public function create(Module $module)
     {
-        //$request->user()->authorizeRoles(['tutor']);  
-        $posts = Post::all();
-        return view('posts.postForm', compact('posts'));
+        return view('posts.postForm', compact('module'));
     }
 
     public function store(Request $request)

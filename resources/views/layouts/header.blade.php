@@ -1,4 +1,4 @@
-<header class="app-header navbar">
+<header class="app-header navbar navbar-dark">
     <button class="navbar-toggler sidebar-toggler d-lg-none mr-auto" type="button" data-toggle="sidebar-show">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -9,9 +9,9 @@
     <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <ul class="nav navbar-nav ml-auto mr-3">
+    <ul class="nav navbar-nav ml-auto">
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle m-2" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                 <img class="img-avatar" src="{{ Storage::url(Auth::user()->avatar) }}">
             </a>
             <div class="dropdown-menu dropdown-menu-right shadow mt-2">
