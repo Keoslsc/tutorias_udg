@@ -32,7 +32,7 @@ class User extends Authenticatable implements MustVerifyEmail
             'path' => 'avatars',
             
             // placeholder image if image field is empty
-            'placeholder' => 'public/avatars/user.png',
+            'placeholder' => 'public/user.png',
         ]
     ];
     /**
