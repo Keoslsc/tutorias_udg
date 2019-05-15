@@ -8,7 +8,7 @@
             <h2><strong>{{ $module->name }}</strong></h2>
         </div>
         <div class="col-4">
-            <a href="" class="btn btn-success float-right">Create post!</a>
+            <a href=" {{ route('post.create', $module->id) }} " class="btn btn-success float-right">Create post!</a>
         </div>
     </div>
         

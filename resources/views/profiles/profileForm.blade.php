@@ -32,7 +32,7 @@
 
                  <!-- Picture -->
                  <div class="input-group mb-3">
-                    <input id="avatar" type="file" class="form-control-file{{ $errors->has('avatar') ? ' is-invalid' : '' }}" name="avatar" autofocus>
+                    <input id="avatar" type="file" class="form-control-file{{ $errors->has('avatar') ? ' is-invalid' : '' }}" name="avatar" autofocus accept="image/*">
                     @if ($errors->has('avatar'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('avatar') }}</strong>
