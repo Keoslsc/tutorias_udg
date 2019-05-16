@@ -47,7 +47,7 @@ class ProfileController extends Controller
         $user = User::find($request->user_id);
         $this->validatorProfile($request->all())->validate();
         if(isset($request->avatar)){
-            $user->uploadImage(request()->file('avatar'), $request->user()->id.'.'.$request->avatar->getClientOriginalExtension());
+            $user->uploadImage(request()->file('avatar'), 'avatar');
             $user->save();
         }
         if($user->name != $request->name){

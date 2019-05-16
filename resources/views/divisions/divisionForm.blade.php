@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="row">
+<div class="row m-3">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-9">
@@ -23,13 +23,7 @@
 
                             <div class="row">
                                 
-                                @if(session()->has('success'))
-                                <div class="col-md-12 py-4">
-                                    <div class="alert alert-info" role="alert">
-                                        {{ session()->get('success') }}
-                                    </div>
-                                    </div>
-                                @endif
+                                @include('messages.messages')
                             
                                 <div class="col-md-12 col-lg-12">
                                     <div class="form-group">
@@ -45,13 +39,13 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-5">
+                                <div class="col-5">
                                     <a href="{{ route('division.index') }}" class="btn btn-danger btn-block">
                                             {{ __('Cancel') }}
                                     </a>
                                 </div>
-                                <div class="col-md-2"></div>
-                                <div class="col-md-5">
+                                <div class="col-2"></div>
+                                <div class="col-5">
                                     <button type="submit" class="btn btn-primary btn-block">
                                             {{ __('Save') }}
                                     </button>

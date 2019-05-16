@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <div class="row justify-content-center">
+    <div class="row justify-content-center m-3">
             <div class="jumbotron">
                 <h1 class="display-4">Hello, please complete the profile!</h1>
                 <p class="lead">It is important that you complete your profile so that we can give you a better experience.</p>

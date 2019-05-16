@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     protected $fillable = [
-        'id', 'name', 'description', 'user_id', 'created_at'
+        'id', 'name', 'description', 'user_id', 'module_id', 'created_at'
     ];
 
     public function user()
@@ -18,5 +18,10 @@ class Post extends Model
     public function module()
     {
         return $this->belongsTo('App\Module');
+    }
+
+    public function files()
+    {
+        return $this->morphMany('App\File', 'foreign');
     }
 }

@@ -8,14 +8,9 @@ class File extends Model
 {
     protected $guarded = ['id'];
     
-    public function module()
+    public function post()
     {
-        return $this->belongsTo(Module::class);
-    }
-
-    public function user()
-    {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo('App\Post');
     }
 
 }
