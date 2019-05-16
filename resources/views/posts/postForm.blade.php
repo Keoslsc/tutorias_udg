@@ -11,7 +11,7 @@
                 <button class="btn btn-primary btn-lg" type="submit" >To post</button>
             </div>
     </nav>
-    <div class="row  justify-content-center pt-4">
+    <div class="row justify-content-center pt-4">
         <div class="col-10">
             <div class="input-group input-group-lg">
                 <div class="input-group-prepend">
@@ -39,6 +39,7 @@
             @endif
             
         </div>
+        
        <div class="col-10">
            FILES 
         </div> 

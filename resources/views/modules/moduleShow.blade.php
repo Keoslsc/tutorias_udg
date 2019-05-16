@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container-fluid">
+<div class="m-3 container-fluid">
     @if (isset($module))
     <div class="row pb-4">
         <div class="col-8">

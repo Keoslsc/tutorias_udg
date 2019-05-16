@@ -43,7 +43,7 @@
 
                 <!-- Content -->
                 <main class="main">
-                    <div class="m-3 animated fadeIn delay-1s">
+                    <div class="animated fadeIn delay-1s">
                         @yield('content')
                     </div>
                 </main>
