@@ -45,9 +45,11 @@ Route::delete('unsubscribe',['uses' => 'SubscriptionController@destroy'])->name(
 
 //Post
 Route::get('post/new/{module}', ['uses' => 'PostController@create'])->middleware('verified')->name('post.create');
+Route::post('post', ['uses' => 'PostController@store'])->middleware('verified')->name('post.store');
+Route::get('post/{post}', ['uses' => 'PostController@show'])->middleware('verified')->name('post.show');
 
 //File
-Route::resource('file', 'FileController', ['except' => ['create', 'edit', 'update']]);
+Route::resource('file', 'FileController', ['except' => ['create', 'store', 'edit', 'update']]);
 
 
 Auth::routes(['verify' => true]);
