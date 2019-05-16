@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         @if (isset($modules))
-            <div class="row justify-content-center">
+            <div class="m-3 row justify-content-center">
                 @include('messages.messages')
                 <div class="table-responsive">
                     <table class="table table-bordered table-hover text-center">
