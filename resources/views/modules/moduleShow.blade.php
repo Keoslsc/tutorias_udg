@@ -60,6 +60,25 @@
                             </div>
                             <div class="card-footer">
                                 <div class="row">
+                                    
+                                    @can('owner', $post)
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-8">
+                                            @if ($post->user->id == Auth::user()->id )
+                                                Me
+                                            @else
+                                                <a href=" {{ route('profile.show', $post->user->id) }} " class="text-left">{{ $post->user->name }}</a>
+                                            @endif
+                                        </div>
+                                        
+                                        <div class="col-6 col-sm-6 col-md-3 col-lg-3 col-xl-2">
+                                            <a href=" {{ route('post.delete', $post->id) }} " class="btn btn-danger btn-block">Delete</a>
+                                        </div>
+                                        <div class="col-6 col-sm-6 col-md-3 col-lg-3 col-xl-2">
+                                            <a href=" {{ route('post.show', $post->id) }} " class="btn btn-success btn-block">View</a>
+                                        </div>
+                                   
+                                        
+                                    @else
                                     <div class="col-7 col-sm-7 col-md-8 col-lg-9 col-xl-10">
                                         @if ($post->user->id == Auth::user()->id )
                                             Me
@@ -67,9 +86,12 @@
                                             <a href=" {{ route('profile.show', $post->user->id) }} " class="text-left">{{ $post->user->name }}</a>
                                         @endif
                                     </div>
+                                    
                                     <div class="col-5 col-sm-5 col-md-4 col-lg-3 col-xl-2">
                                         <a href=" {{ route('post.show', $post->id) }} " class="btn btn-success btn-block">View</a>
                                     </div>
+                                    @endcan
+                                    
                                 </div>
                             </div>
                         </div>

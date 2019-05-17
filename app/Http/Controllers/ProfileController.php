@@ -33,7 +33,8 @@ class ProfileController extends Controller
 
     public function show(Profile $profile)
     {
-        return view('profiles.profileForm', compact('profile'));
+        $profile->load(['user', 'career']);
+        return view('profiles.profileShow', compact('profile'));
     }
 
     public function create()
