@@ -7,6 +7,9 @@
         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 d-none d-sm-none d-md-block ">
             @if (isset($post->user))
                 <div class="card">
+                    <div class="card-header text-center">
+                        <h3>Autor</h3>
+                    </div>
                     <div class="card-body" >
                         <div class="row">
                             <div class="col-lg-2 d-none d-lg-block d-xl-none"></div>
@@ -19,7 +22,7 @@
                                 @if($post->user->id == Auth::user()->id)
                                     Me
                                 @else
-                                    <a href=" {{ route('profile.show', $post->user->id) }} "> <h5 class="m-0">{{ $post->user->name }}</h5> </a>
+                                    By: <a href=" {{ route('profile.show', $post->user->id) }} "> <h5 class="m-0">{{ $post->user->name }}</h5> </a>
                                 @endif
                                 <P class="m-0">{{ $post->user->profile->career->name }}</P>
                                 <p class="text-muted mb-0">{{ $post->user->roles->first()->description }}</p>

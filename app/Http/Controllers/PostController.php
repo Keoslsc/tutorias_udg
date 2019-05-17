@@ -60,6 +60,18 @@ class PostController extends Controller
         return view('posts.postShow', compact('post'));
     }
 
+    public function destroy(Post $post)
+    {
+        $module = $post->module;
+        $this->authorize('owner', $post);
+        foreach ($post->files as $file) {
+            Storage::delete($file->hashed);
+            $file->delete();
+        }
+        $post->delete();
+        return redirect()->route('module.show', compact('module'))->with('success', 'Your post was deleted.');
+    }
+
 
     protected function validatorStore(array $data)
     {
