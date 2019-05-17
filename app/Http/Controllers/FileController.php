@@ -27,28 +27,7 @@ class FileController extends Controller
      */
     public function store(Request $request)
     {
-        //Recibe múltiples archivos y guarda cada uno.
-        foreach ($request->files as $file) {
-
-            //Valida que se haya cargado el archivo correctamente
-            if ($file->isValid()) {
-                //Guarda el archivo en storage/app/
-                $hashedName = $file->store('');
-
-                //Guarda registro en tabla archivos
-                $regFile = File::create([
-                    'modelo_id' => $request->modelo_id,
-                    'modelo_type' => 'App\\' . $request->modelo_type,
-                    'nombre' => $file->getClientOriginalName(),
-                    'hashed' => $hashedName,
-                    'mime' => $file->getClientMimeType(),
-                    'size' => $file->getClientSize(),
-                ]);
-                $regFile->save();
-            }
-        }
-
-        return redirect()->back();
+        
     }
 
     /**
@@ -60,7 +39,7 @@ class FileController extends Controller
     public function show(File $file)
     {
         $headers = ['Content-Type: ' . $file->mime];
-        return Storage::download($file->hashed, $file->nombre, $headers);
+        return Storage::download($file->hashed, $file->name, $headers);
     }
 
     /**

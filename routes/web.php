@@ -30,11 +30,11 @@ Route::get('verify/tutor', 'Auth\VerificationController@showTutor')->name('verif
 Route::resource('profile', 'ProfileController')->middleware('verified');
 
 //Division
-Route::resource('division', 'DivisionController')->middleware('verified');
+Route::resource('division', 'DivisionController',  ['except' => ['show']])->middleware('verified');
 Route::get('division/modules/{division}', 'DivisionController@IndexModulesFromDivision')->middleware('verified')->name('divisions.modules');
 
 //Career
-Route::resource('career', 'CareerController')->middleware('verified');
+Route::resource('career', 'CareerController', ['except' => ['show']])->middleware('verified');
 
 //Module
 Route::resource('module', 'ModuleController')->middleware('verified');
@@ -45,9 +45,12 @@ Route::delete('unsubscribe',['uses' => 'SubscriptionController@destroy'])->name(
 
 //Post
 Route::get('post/new/{module}', ['uses' => 'PostController@create'])->middleware('verified')->name('post.create');
+Route::post('post', ['uses' => 'PostController@store'])->middleware('verified')->name('post.store');
+Route::get('post/{post}', ['uses' => 'PostController@show'])->middleware('verified')->name('post.show');
+Route::get('post/delete/{post}', ['uses' => 'PostController@destroy'])->middleware('verified')->name('post.delete');
 
 //File
-Route::resource('file', 'FileController', ['except' => ['create', 'edit', 'update']]);
+Route::resource('file', 'FileController', ['except' => ['create', 'store', 'edit', 'update']]);
 
 
 Auth::routes(['verify' => true]);

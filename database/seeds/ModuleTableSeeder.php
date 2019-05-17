@@ -1,5 +1,6 @@
 <?php
 
+use App\Module;
 use Illuminate\Database\Seeder;
 
 class ModuleTableSeeder extends Seeder
@@ -13,7 +14,7 @@ class ModuleTableSeeder extends Seeder
     {
         $module = new Module();
         $module->name = 'Ecuaciones Diferenciales Ordinarias';
-        $modeule->division_id = '1';
+        $module->division_id = '1';
         $module->save();
 
         $module = new Module();
