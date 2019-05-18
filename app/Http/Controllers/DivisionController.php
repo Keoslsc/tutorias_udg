@@ -25,7 +25,7 @@ class DivisionController extends Controller
      */
     public function index()
     {
-        $divisions = Division::with(['modules'])->get()->toJson();
+        $divisions = Division::with(['modules'])->get();
         return view('divisions.divisionIndex', compact('divisions'));
     }
 

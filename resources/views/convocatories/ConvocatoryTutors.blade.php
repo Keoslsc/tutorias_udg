@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         @if (count($tutors) > 0)
-            <div class="row justify-content-center">
+            <div class="row justify-content-center m-3">
                 <div class="col-9 text-center">
                     <h3>Tutor's request </h3>
                     @if ($errors->has('fash'))
@@ -129,7 +129,7 @@
 
             
         @else
-            <h3 class="text-center"> There are no data!</h3>
+            <h3 class="m-3 text-center"> There are no data!</h3>
         @endif
     </div>
 @endsection

@@ -3,9 +3,8 @@
 @section('content')
 <div class="row">
         <div class="container">
-            <div class="row justify-content-center">
+            <div class="m-3 row justify-content-center">
                 <div class="col-md-9">
-
                     @if(isset($module))
                     <form action="{{ route('module.update', $module->id) }}" method="POST"class="card">
                         <input type="hidden" name="_method" value="PATCH">
