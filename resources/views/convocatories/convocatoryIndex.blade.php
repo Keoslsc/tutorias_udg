@@ -2,13 +2,13 @@
 
 @section('content')
     <div class="container">
-        @if (count($convocatories) > 0)
-            <div class="row justify-content-center">
+        @if (isset($convocatories))
+            <div class="row justify-content-center m-3">
                 <div class="col-9 text-center">
                     <h3>Convocatories</h3>
                     <div class="table-responsive">
                         <table class="table table-hover table-bordered">
-                            <thead class="table-primary">
+                            <thead>
                                 <tr>
                                     <th>Id</th>
                                     <th>Start</th>

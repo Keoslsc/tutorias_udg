@@ -4,6 +4,7 @@
     <div class="container">
         @if (isset($modules))
             <div class="m-3 row justify-content-center">
+                <h3 class="text-center">Modules</h3>
                 @include('messages.messages')
                 <div class="table-responsive">
                     <table class="table table-bordered table-hover text-center">
