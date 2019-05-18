@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         @if (isset($divisions))
-            <div class="row justify-content-center">
+            <div class="row justify-content-center m-3">
                 <div class="table-responsive">
                     <table class="table table-bordered table-hover text-center">
                         <thead>
