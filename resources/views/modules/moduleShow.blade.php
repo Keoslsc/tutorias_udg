@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="m-3 container-fluid">
+<a href=" {{ route('divisions.modules', $module->id) }} " class="btn btn-danger float-right"> Go Back</a>
     @if (isset($module))
     <div class="row pb-4">
         <div class="col-8">
@@ -9,7 +11,7 @@
         </div>
         <div class="col-4">
             @if(Auth::user()->hasRole('tutor'))
-                <a href=" {{ route('post.create', $module->id) }} " class="btn btn-success float-right">Create post!</a>
+                <a href=" {{ route('post.create', $module->id) }} " class="btn btn-success float-right">Create Post</a>
             @endif
         </div>
     </div>

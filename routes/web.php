@@ -32,12 +32,14 @@ Route::resource('profile', 'ProfileController')->middleware('verified');
 //Division
 Route::resource('division', 'DivisionController',  ['except' => ['show']])->middleware('verified');
 Route::get('division/modules/{division}', 'DivisionController@IndexModulesFromDivision')->middleware('verified')->name('divisions.modules');
+Route::get('division}', ['uses' => 'DivisionController@show'])->middleware('verified')->name('division.show');
 
 //Career
 Route::resource('career', 'CareerController', ['except' => ['show']])->middleware('verified');
 
 //Module
 Route::resource('module', 'ModuleController')->middleware('verified');
+Route::get('module/{module}', ['uses' => 'ModuleController@show'])->middleware('verified')->name('module.show');
 
 //Subscription
 Route::post('subscription',['uses' => 'SubscriptionController@store'])->name('subscription.module.store');
