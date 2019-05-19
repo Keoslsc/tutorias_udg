@@ -22,10 +22,9 @@ class CreateCommentsTable extends Migration
             $table->timestamps();
         });
 
-        Schema::table('posts', function($table) {
-            $table->foreign('post_id')->references('id')->on('posts')
-            $table->foreign('user_id')->references('id')->on('users')
-            ->onUpdate('cascade');
+        Schema::table('comments', function($table) {
+            $table->foreign('post_id')->references('id')->on('posts')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
