@@ -15,7 +15,4 @@ Instrucciones de instalación:
  - php artisan storage:link
  - php artisan migrate --seed
  
- 
- * - php artisan migrate:fresh
- 
   
