@@ -4,11 +4,15 @@
 <form action=" {{ route('post.store') }} " method="POST" enctype="multipart/form-data">
     <nav class="navbar navbar-dark row" style="background-color: #343a40;">
         
-        <div class="col-9 col-sm-10 col-md-10 col-lg-10 col-xl-11">
+        <div class="col-6 col-sm-8 col-md-8 col-lg-8 col-xl-10">
             <a class="navbar-brand" href="#">Create a new post!</a>
         </div>
+        
         <div class="col-3 col-sm-2 col-md-2 col-lg-2 col-xl-1">
-            <button class="btn btn-primary btn-lg" type="submit" >To post</button>
+            <button class="btn btn-primary btn-block" type="submit" >To post</button>
+        </div>
+        <div class="col-3 col-sm-2 col-md-2 col-lg-2 col-xl-1">
+            <a href=" {{ route('module.show', $module->id) }} " class="btn btn-danger btn-block">Go back</a>
         </div>
     </nav>
 
