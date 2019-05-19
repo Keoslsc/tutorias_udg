@@ -83,4 +83,28 @@ class PostController extends Controller
         ]);
     }
 
+    public function postPost(Request $request)
+    {  
+        $post = Post::find($request->id);
+        
+        if( $post->user_id === auth()->user()->id){
+            return \Redirect::route('post.show', $request->id)->with('error', 'You cannot rate your own post');
+        }  
+        
+        $rateprev =  \willvincent\Rateable\Rating::where('user_id',auth()->user()->id)->where('rateable_id',$request->id)->first();
+
+        if($rateprev===null){
+            request()->validate(['rate' => 'required']);        
+            $rating = new \willvincent\Rateable\Rating;
+            $rating->rating = $request->rate;
+            $rating->user_id = auth()->user()->id;
+            $post->ratings()->save($rating);
+           
+            return \Redirect::route('post.show', $request->id);
+        }
+      
+
+        return \Redirect::route('post.show', $request->id)->with('error', 'You already rated this post');
+    }
+
 }

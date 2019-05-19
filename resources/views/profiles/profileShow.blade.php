@@ -23,9 +23,18 @@
                     <h4>Information: </h4>
                     <h5 class="card-text"><i class="icon-envelope-open"></i> {{ $profile->user->email }} </h5>
                     <h5 class="card-text"><i class="icon-badge"></i> {{ $profile->user->roles->first()->description }} </h5>
-                    <hr>
-
-                   
+                    @if($profile->user->roles->first()->description === 'Tutor')                                   
+                    <h5 class="card-text"><i class="icon-star"></i>    Rating: 
+                                    @for ($i = 0; $i < round( $profile->aveg() ,0); $i++)
+                                    <i class="fa fa-star fa-lg" style="color:#d8ca5d"></i>
+                                    @endfor
+                                    @for ($i = round($profile->aveg(),0); $i < 5 ;$i++)
+                                    <i class="fa fa-star fa-lg" style="color:#afac95"></i>
+                                    @endfor
+                                    {{number_format($profile->aveg(), 1, '.', '')}}
+                    </h5> 
+                    @endif
+                    <hr>                   
                     @if(isset($profile))
                         <h4>About me: </h4>
                         <h5 class="card-text"><i class="icon-calendar"></i><strong> Birthday: </strong> {{ $profile->date }}</h5>

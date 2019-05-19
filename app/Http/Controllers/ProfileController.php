@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Career;
 use App\Profile;
+use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -15,10 +16,14 @@ class ProfileController extends Controller
      *
      * @return void
      */
+   
+
     public function __construct()
     {
         $this->middleware('auth');
     }
+
+  
 
     public function index(Request $request)
     {

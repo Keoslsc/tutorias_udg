@@ -27,4 +27,6 @@ class HomeController extends Controller
         $user = $request->user();
         return view('home', compact('user'));
     }
+
+    
 }
