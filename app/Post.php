@@ -25,5 +25,9 @@ class Post extends Model
     public function comment()
     {
         return $this->hasMany('App\Comment');
-    }    
+    }
+    public function files()
+    {
+        return $this->morphMany('App\File','foreign')
+    }
 }
