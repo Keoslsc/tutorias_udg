@@ -12,7 +12,8 @@
         "fideloper/proxy": "^4.0",
         "laravel/framework": "5.7.*",
         "laravel/tinker": "^1.0",
-        "qcod/laravel-imageup": "^1.0"
+        "qcod/laravel-imageup": "^1.0",
+        "willvincent/laravel-rateable": "^1.07"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",
