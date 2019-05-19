@@ -36,29 +36,35 @@
 
 
                             <!-- Name -->
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
+                            <fieldset class="form-group">
+                            <label>{{ __('Name') }}</label>
+                            <div class="input-group">
+                                <span class="input-group-prepend">
                                     <span class="input-group-text"><i class="icon-user"></i></span>
-                                </div>
+                                </span>
                                 <input id="name" type="text"
                                     class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name"
-                                    value="{{ old('name') }}" placeholder="Name" required autofocus>
-    
+                                    value="{{ old('name') }}" placeholder="Enter your name" required autofocus>
+                                
                                 @if ($errors->has('name'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('name') }}</strong>
                                 </span>
                                 @endif
                             </div>
+                            <small class="text-muted">ex. Juan Pérez</small>
+                            </fieldset>
     
                             <!-- Email -->
-                            <div class="input-group mb-3">
+                            <fieldset class="form-group">
+                            <label>{{ __('Email') }}</label>
+                            <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">@</span>
                                 </div>
                                 <input id="email" type="email"
                                     class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email"
-                                    value="{{ old('email') }}" placeholder="Email" required autofocus>
+                                    value="{{ old('email') }}" placeholder="Enter your mail" required autofocus>
         
                                 @if ($errors->has('email'))
                                 <span class="invalid-feedback" role="alert">
@@ -66,16 +72,20 @@
                                 </span>
                                 @endif
                             </div>
+                            <small class="text-muted">ex. mail@mail.com</small>
+                            </fieldset>
 
 
                             <!-- Password -->
-                            <div class="input-group mb-3">
+                            <fieldset class="form-group">
+                            <label>{{ __('Password') }}</label>
+                            <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="icon-lock"></i></span>
                                 </div>
                                 <input id="password" type="password"
                                     class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password"
-                                    value="{{ old('password') }}" placeholder="Password" required autofocus>
+                                    value="{{ old('password') }}" placeholder="Enter password" required autofocus>
         
                                 @if ($errors->has('password'))
                                 <span class="invalid-feedback" role="alert">
@@ -83,9 +93,11 @@
                                 </span>
                                 @endif
                             </div>
+                            </fieldset>
     
                             <!-- Password Confirm -->
-                            <div class="input-group mb-3">
+                            <fieldset class="form-group">
+                            <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="icon-lock"></i></span>
                                 </div>
@@ -93,12 +105,14 @@
                                 class="form-control{{ $errors->has('password-confirm') ? ' is-invalid' : '' }}" name="password_confirmation"
                                 value="{{ old('password-confirm') }}"  placeholder="Repeat password" required autofocus>
                             </div>
+                            <small class="text-muted">Minimum length 6 characters*</small>
+                            </fieldset>
 
                             <div class="form-group mb-0">
-                                <a class="btn btn-danger btn-block" href="{{ route('login') }}"> {{ __('Back') }}</a>
                                 <button type="submit" class="btn btn-primary btn-block">
                                     {{ __('Register') }}
                                 </button>
+                                <a class="btn btn-secondary btn-block" href="{{ route('login') }}"> {{ __('Back') }}</a>
                             </div>
     
                         </div>

@@ -31,6 +31,7 @@
                 
 
                  <!-- Picture -->
+                <label for="start" class="col-form-label">{{ __('Change profile photo') }}</label>
                  <div class="input-group mb-3">
                     <input id="avatar" type="file" class="form-control-file{{ $errors->has('avatar') ? ' is-invalid' : '' }}" name="avatar" autofocus accept="image/*">
                     @if ($errors->has('avatar'))
@@ -42,6 +43,7 @@
 
 
                 <!-- Name -->
+                <label for="start" class="col-form-label">{{ __('Name') }}</label>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="icon-user"></i></span>
@@ -58,6 +60,7 @@
                 </div>
 
                 <!-- Birthday -->
+                <label for="start" class="col-form-label">{{ __('Birthday') }}</label>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="icon-calendar"></i></span>
@@ -74,6 +77,7 @@
                 </div>
 
                 <!-- About Me -->
+                <label for="start" class="col-form-label">{{ __('About me') }}</label>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="icon-heart"></i></span>
@@ -88,11 +92,12 @@
                 </div>
                 
                 <!-- Cellphone -->
+                <label for="start" class="col-form-label">{{ __('Cellphone') }}</label>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="icon-screen-smartphone"></i></span>
                     </div>
-                    <input id="cellphone" type="number"
+                    <input id="cellphone" type="text" maxlength="15"
                         class="form-control{{ $errors->has('cellphone') ? ' is-invalid' : '' }}" name="cellphone"
                         value="{{ isset($profile->cellphone) ? $profile->cellphone : old('cellphone') }}" placeholder="Cellphone" required autofocus>
 
@@ -104,12 +109,13 @@
                 </div>
 
                 <!-- Career -->
+                <label for="start" class="col-form-label">{{ __('Career') }}</label>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="icon-graduation"></i></span>
                     </div>
                     <select name="career_id" id="career_id" class="form-control{{ $errors->has('career_id') ? ' is-invalid' : '' }}">
-                        <option value=""></option>
+                        <option value=""> Select career...</option>
                         @foreach ($careers as $career)
                             @if($career->status)
                                 <option value="{{ $career->id }}" {{ isset($profile) ? $profile->career_id == $career->id ? 'selected' : '' : '' }}>{{ $career->name }}</option>
@@ -125,6 +131,7 @@
                 </div>
 
                 <!-- Gender -->
+                <label for="start" class="col-form-label">{{ __('Gender') }}</label>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="icon-people"></i></span>
@@ -145,16 +152,15 @@
                 <!-- Buttons -->
                 <div class="row">
                     <div class="col-5">
-                            <a href="{{ route('profile.index') }}" class="btn btn-danger btn-block">Cancel</a>
+                        <button type="submit" class="btn btn-primary btn-block">Save</button>
                     </div>
                     <div class="col-2"></div>
                     <div class="col-5">
-                        <button type="submit" class="btn btn-primary btn-block">Save</button>
+                            <a href="{{ route('profile.index') }}" class="btn btn-secondary btn-block">Cancel</a>
                     </div>
                 </div>
                 
-
-                
+            </form>
             </form>
         </div>
     </div>

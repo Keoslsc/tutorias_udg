@@ -43,7 +43,7 @@
                                         <div class="form-group">
                                             <label for="division_id" class="col-form-label">{{ __('Division') }}</label>
                                             <select name="division_id" id="division_id" class="form-control{{ $errors->has('division_id') ? ' is-invalid' : '' }}">
-                                                <option value=""></option>
+                                                <option value="">Select one...</option>
                                                 @foreach ($divisions as $division)
                                                     @if (old('division_id') == $division->id)
                                                         <option value="{{ $division->id }}" selected>{{ $division->description }}</option>
@@ -63,15 +63,15 @@
                                     </div>
 
                                 <div class="col-5">
-                                    <a href="{{ route('career.index') }}" class="btn btn-danger btn-block">
-                                            {{ __('Cancel') }}
-                                    </a>
-                                </div>
-                                <div class="col-2"></div>
-                                <div class="col-5">
                                     <button type="submit" class="btn btn-primary btn-block">
                                             {{ __('Save') }}
                                     </button>
+                                </div>
+                                <div class="col-2"></div>
+                                <div class="col-5">
+                                    <a href="{{ route('career.index') }}" class="btn btn-secondary btn-block">
+                                            {{ __('Cancel') }}
+                                    </a>
                                 </div>
 
                             </div>

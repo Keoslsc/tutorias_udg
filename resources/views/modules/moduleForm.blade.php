@@ -25,7 +25,7 @@
                             
                                 <div class="col-md-6 col-lg-6">
                                     <div class="form-group">
-                                        <label for="name" class="col-form-label">{{ __('module Name') }}</label>
+                                        <label for="name" class="col-form-label">{{ __('Module Name') }}</label>
                                         <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name"
                                             value="{{ isset($module) ? $module->name : old('name') }}" required autofocus>
                                 
@@ -41,7 +41,7 @@
                                         <div class="form-group">
                                             <label for="division_id" class="col-form-label">{{ __('Division') }}</label>
                                             <select name="division_id" id="division_id" class="form-control{{ $errors->has('division_id') ? ' is-invalid' : '' }}">
-                                                <option value=""></option>
+                                                <option value="">Select one..</option>
                                                 @foreach ($divisions as $division)
                                                     @if (old('division_id') == $division->id)
                                                         <option value="{{ $division->id }}" selected>{{ $division->description }}</option>
@@ -59,17 +59,16 @@
                                             @endif
                                         </div>
                                     </div>
-
-                                <div class="col-md-5">
-                                    <a href="{{ route('module.index') }}" class="btn btn-danger btn-block">
-                                            {{ __('Cancel') }}
-                                    </a>
-                                </div>
-                                <div class="col-md-2"></div>
                                 <div class="col-md-5">
                                     <button type="submit" class="btn btn-primary btn-block">
                                             {{ __('Save') }}
                                     </button>
+                                </div>
+                                <div class="col-md-2"></div>
+                                <div class="col-md-5">
+                                    <a href="{{ route('module.index') }}" class="btn btn-secondary btn-block">
+                                            {{ __('Cancel') }}
+                                    </a>
                                 </div>
 
                             </div>
