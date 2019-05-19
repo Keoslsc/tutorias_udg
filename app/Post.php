@@ -28,6 +28,6 @@ class Post extends Model
     }
     public function files()
     {
-        return $this->morphMany('App\File','foreign')
+        return $this->morphMany('App\File','foreign');
     }
 }
