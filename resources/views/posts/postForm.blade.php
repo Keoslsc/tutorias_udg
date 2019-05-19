@@ -1,17 +1,22 @@
 @extends('layouts.app')
 
 @section('content')
-<form action="">
+<form action=" {{ route('post.store') }} " method="POST" enctype="multipart/form-data">
     <nav class="navbar navbar-dark row" style="background-color: #343a40;">
         
-            <div class="col-9 col-sm-10 col-md-10 col-lg-10 col-xl-11">
-                <a class="navbar-brand" href="#">Create a new post!</a>
-            </div>
-            <div class="col-3 col-sm-2 col-md-2 col-lg-2 col-xl-1">
-                <button class="btn btn-primary btn-lg" type="submit" >To post</button>
-            </div>
+        <div class="col-9 col-sm-10 col-md-10 col-lg-10 col-xl-11">
+            <a class="navbar-brand" href="#">Create a new post!</a>
+        </div>
+        <div class="col-3 col-sm-2 col-md-2 col-lg-2 col-xl-1">
+            <button class="btn btn-primary btn-lg" type="submit" >To post</button>
+        </div>
     </nav>
-    <div class="row  justify-content-center pt-4">
+
+    @csrf
+    <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+    <input type="hidden" name="module_id" value="{{ $module->id }}">
+    
+    <div class="row justify-content-center pt-4">
         <div class="col-10">
             <div class="input-group input-group-lg">
                 <div class="input-group-prepend">
@@ -39,8 +44,20 @@
             @endif
             
         </div>
-       <div class="col-10">
-           FILES 
+        
+       <div class="col-10 pt-5">
+           <!-- Files -->
+           <div class="input-group mb-3">
+                <div class="custom-file">
+                    <input id="files" type="file" class="custom-file-input{{ $errors->has('files') ? ' is-invalid' : '' }}" name="files[]" required multiple>
+                    <label class="custom-file-label" for="files">Choose file</label>
+                </div>
+                @if ($errors->has('files'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('files') }}</strong>
+                    </span>
+                @endif
+            </div>
         </div> 
 
     </div>

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="row">
+<div class="row m-3">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-9">
@@ -62,13 +62,13 @@
                                         </div>
                                     </div>
 
-                                <div class="col-md-5">
+                                <div class="col-5">
                                     <a href="{{ route('career.index') }}" class="btn btn-danger btn-block">
                                             {{ __('Cancel') }}
                                     </a>
                                 </div>
-                                <div class="col-md-2"></div>
-                                <div class="col-md-5">
+                                <div class="col-2"></div>
+                                <div class="col-5">
                                     <button type="submit" class="btn btn-primary btn-block">
                                             {{ __('Save') }}
                                     </button>

@@ -7,7 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     protected $fillable = [
-        'id', 'body', 'description', 'user_id', 'created_at'
+<<<<<<< HEAD
+        'id', 'name', 'description', 'user_id', 'module_id', 'created_at'
+=======
+        'id', 'name', 'description', 'user_id', 'module_id', 'created_at'
+>>>>>>> master
     ];
 
     public function user()
@@ -19,8 +23,15 @@ class Post extends Model
     {
         return $this->belongsTo('App\Module');
     }
+<<<<<<< HEAD
     public function comment()
     {
         return $this->hasMany('App\Comment');
     }    
+=======
+    public function files()
+    {
+        return $this->morphMany('App\File', 'foreign');
+    }
+>>>>>>> master
 }

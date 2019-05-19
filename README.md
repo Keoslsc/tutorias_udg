@@ -13,7 +13,9 @@ Instrucciones de instalación:
  - crear .env 
  - ejecutamos dentro del proyecto "php artisan key:generate"
  - php artisan storage:link
- - php artisan migrate:refresh
  - php artisan migrate --seed
+ 
+ 
+ * - php artisan migrate:fresh
  
   

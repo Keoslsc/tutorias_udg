@@ -1,6 +1,5 @@
-
 @if (isset($divisions))
-    <div class="row justify-content-center">
+    <div class="m-3 row justify-content-center">
         <h2 class="text-center">Divisions</h2>
         @foreach ($divisions as $division)
             @if($division->status && count($division->modules) > 0)

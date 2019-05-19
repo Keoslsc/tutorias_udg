@@ -3,7 +3,8 @@
 @section('content')
     <div class="container">
         @if (isset($careers))
-            <div class="row justify-content-center">
+            <div class="row justify-content-center m-3">
+                <h3 class="text-center">Careers</h3>
                 <div class="table-responsive">
                     <table class="table table-bordered table-hover text-center">
                         <thead>

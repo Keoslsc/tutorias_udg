@@ -130,12 +130,5 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany('App\Post');
     }
-
-    //Files
-    public function files()
-    {
-        return $this->morphMany('App\File', 'modelo');
-    }
-
     
 }

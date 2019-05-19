@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         @if ($convocatory)
-            <div class="row justify-content-center">
+            <div class="row justify-content-center m-3">
                 <div class="col-9 text-center">
                     <h3>Convocatory details</h3>
                     <div class="table-responsive">
