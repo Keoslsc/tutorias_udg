@@ -34,7 +34,7 @@ class CommentController extends Controller
     protected function validatorStore(array $data)
     {
         return Validator::make($data, [
-            'post_id' => ['required', 'exists:posts,id']
+            'post_id' => ['required', 'exists:posts,id'],
             'user_id' => ['required', 'exists:users,id']
         ]);
     }
