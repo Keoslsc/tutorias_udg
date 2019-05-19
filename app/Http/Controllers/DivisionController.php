@@ -69,7 +69,7 @@ class DivisionController extends Controller
      */
     public function show(Division $division)
     {
-        //
+        return view('divisions.divisionIndexHome', compact('division'));
     }
 
     /**

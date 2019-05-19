@@ -2,8 +2,8 @@
 
 @section('content')
     <div class="m-3">
-
         @if (count($division->modules) > 0)
+        <a href=" {{ route('login') }} " class="btn btn-danger float-right"> Go Back</a>
             <h2 class="text-center">Modules  of {{ $division->description }}</h2>
             <div class="row justify-content-center">
                 <div class="col-11">

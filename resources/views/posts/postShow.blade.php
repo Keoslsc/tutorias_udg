@@ -32,7 +32,6 @@
                 </div>
             @endif
         </div>
-
         <div class="col-12 col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 d-none d-sm-block d-block d-sm-nonecol-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 d-none d-sm-block">
             <div class="card">
                 <div class="card-header">
@@ -65,5 +64,8 @@
         </div>
 
     </div>    
+</div>
+<div class="row justify-content-center">
+    <a href=" {{ route('module.show', $post->module) }} " class="btn btn-danger float-center">Go back</a>
 </div>
 @endsection

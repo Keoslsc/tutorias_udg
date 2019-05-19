@@ -1,4 +1,3 @@
-
 @if (isset($divisions))
     <div class="m-3 row justify-content-center">
         <h2 class="text-center">Divisions</h2>

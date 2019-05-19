@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css?family=Arimo');
+
+:root {
+	--orange1: #E74D10;
+	--orange2: #EA632E;
+	--orange3: #ED7A4C;
+	--orange4: #F0906A;
+	/*--blue1: #10AAE7;
+	--blue2: #2EB5EA;
+	--blue3: #4CBFED;
+	--blue4: #6ACAF0;*/
+	--whito: #FFFCFB;
+	--blacko: #20201F;
+	--font-family-sans-serif: 'Arimo', sans-serif;
+}
+
+body {
+    margin: 0;
+    font-family: 'Arimo', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--blacko);
+    text-align: left;
+    background-color: var(--whito);
+}
+
+h1, h4 {
+	color: var(--orange1);
+}
+
+.app-header {
+    background-color: var(--orange3);
+    border-bottom: 0.5px solid #dee2e6;
+}
+
+.bg-primary {
+  background-color: var(--orange2) !important;
+}
+
+.card-profile .card-header {
+    height: 9rem;
+    background-size: cover;
+}
+
+.card-profile-img {
+    max-height: 140px;
+    max-width: 140px;
+    margin-top: -8rem;
+    margin-bottom: 1rem;
+    border: 3px solid #fff;
+    border-radius: 100%;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    background: white;
+}
+
+img {
+    vertical-align: middle;
+    border-style: none;
+}
+
+.btn-secondary {
+  color: #fff;
+  background-color: var(--orange4);
+  border-color: var(--orange4);
+}
+
+.btn-secondary:hover {
+  color: #fff;
+  background-color: var(--orange3);
+  border-color: var(--orange2);
+}
+
+.btn-secondary:focus,
+.btn-secondary.focus {
+  box-shadow: 0 0 0 0.2rem rgba(210, 127, 71, 0.5);
+}
+
+.btn-secondary.disabled,
+.btn-secondary:disabled {
+  color: #fff;
+  background-color: var(--orange4);
+  border-color: var(--orange4);
+}
+
+.btn-secondary:not(:disabled):not(.disabled):active,
+.btn-secondary:not(:disabled):not(.disabled).active,
+.show > .btn-secondary.dropdown-toggle {
+  color: #fff;
+  background-color: var(--orange2);
+  border-color: var(--orange1);
+}
+
+.btn-secondary:not(:disabled):not(.disabled):active:focus,
+.btn-secondary:not(:disabled):not(.disabled).active:focus,
+.show > .btn-secondary.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(210, 127, 71, 0.5);
+}
+
