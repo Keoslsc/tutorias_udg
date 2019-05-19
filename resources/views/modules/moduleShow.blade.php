@@ -48,12 +48,17 @@
                             <div class="card-header">
                                 {{ $post->name }}
                                 <div class="card-header-actions">
+                                {{number_format($post->averageRating, 1, '.', '')}}
+                                 
+                                 <!--value=-->
+                                    @for ($i = 0; $i < round( $post->averageRating ,0); $i++)
                                     <i class="fa fa-star fa-lg" style="color:#d8ca5d"></i>
-                                    <i class="fa fa-star fa-lg" style="color:#d8ca5d"></i>
-                                    <i class="fa fa-star fa-lg" style="color:#d8ca5d"></i>
-                                    <i class="fa fa-star fa-lg" style="color:#d8ca5d"></i>
-                                    <i class="fa fa-star fa-lg" style="color:#d8ca5d"></i>
-                                </div>
+                                    @endfor
+                                    @for ($i = round($post->averageRating,0); $i < 5 ;$i++)
+                                    <i class="fa fa-star fa-lg" style="color:#afac95"></i>
+                                    @endfor
+                                                                    
+                                 </div>
                             </div>
                             <div class="card-body">
                                 <p class="text-muted">{{ $post->description }}</p>
@@ -109,4 +114,7 @@
         <h3 class="text-center"> There are no data!</h3>
     @endif
 </div>
+
+
+
 @endsection

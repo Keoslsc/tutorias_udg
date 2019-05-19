@@ -48,7 +48,7 @@ Route::get('post/new/{module}', ['uses' => 'PostController@create'])->middleware
 Route::post('post', ['uses' => 'PostController@store'])->middleware('verified')->name('post.store');
 Route::get('post/{post}', ['uses' => 'PostController@show'])->middleware('verified')->name('post.show');
 Route::get('post/delete/{post}', ['uses' => 'PostController@destroy'])->middleware('verified')->name('post.delete');
-
+Route::post('posts', 'PostController@postPost')->name('posts.post');
 //File
 Route::resource('file', 'FileController', ['except' => ['create', 'store', 'edit', 'update']]);
 
