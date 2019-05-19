@@ -90,14 +90,21 @@ class PostController extends Controller
         if( $post->user_id === auth()->user()->id){
             return \Redirect::route('post.show', $request->id)->with('error', 'You cannot rate your own post');
         }  
-       
-        request()->validate(['rate' => 'required']);        
-        $rating = new \willvincent\Rateable\Rating;
-        $rating->rating = $request->rate;
-        $rating->user_id = auth()->user()->id;
-        $post->ratings()->save($rating);
-       
-        return \Redirect::route('post.show', $request->id);
+        
+        $rateprev =  \willvincent\Rateable\Rating::where('user_id',auth()->user()->id)->where('rateable_id',$request->id)->first();
+
+        if($rateprev===null){
+            request()->validate(['rate' => 'required']);        
+            $rating = new \willvincent\Rateable\Rating;
+            $rating->rating = $request->rate;
+            $rating->user_id = auth()->user()->id;
+            $post->ratings()->save($rating);
+           
+            return \Redirect::route('post.show', $request->id);
+        }
+      
+
+        return \Redirect::route('post.show', $request->id)->with('error', 'You already rated this post');
     }
 
 }

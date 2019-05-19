@@ -71,7 +71,7 @@
                     @for ($i = round($post->averageRating,0); $i < 5 ;$i++)
                                     <i class="fa fa-star fa-lg" style="color:#afac95"></i>
                     @endfor
-                        <input type="number" id="input" name="rate" min="1" max="5">                        
+                        <input type="number" id="input" name="rate" min="1" max="5" style="width:3rem">                        
                         <input type="hidden" name="id" required="" value="{{ $post->id }}">
                         <button class="btn btn-success">Rate</button>
                     <form>
