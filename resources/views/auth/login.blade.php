@@ -88,7 +88,7 @@
                         <div>
                         <h2>Sign up as a student</h2>
                         <p>This application is to support students</p>
-                        <a href="{{ route('register') }}" class="btn btn-primary active mt-3" type="button">Register Now!</a>
+                        <a href="{{ route('register') }}" class="btn btn-primary mt-3" type="button">Register Now!</a>
                         </div>
 
                         <!-- Registro para tutores-->
@@ -97,7 +97,7 @@
                             <div>
                                 <h2><span class="badge badge-warning">NEW</span> Do you want to be a tutor?</h2>
                                 <p>{{ $convocatory->written }}</p>
-                                <a href="{{ route('register.tutor') }}" class="btn btn-primary active mt-3" type="button">Register Here!</a>
+                                <a href="{{ route('register.tutor') }}" class="btn btn-primary mt-3" type="button">Register Here!</a>
                             </div>
                         </div>
                     @endif

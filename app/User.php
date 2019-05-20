@@ -131,4 +131,17 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany('App\Post');
     }
     
+    public function aveg(){  
+        $posts = Post::where('user_id',$this->user_id)->select('id');
+        $ratings = \willvincent\Rateable\Rating::whereIn('rateable_id',$posts)->select('rating');  
+        return $ratings->avg('rating');
+        
+    }
+    public function suma(){  
+        $posts = Post::where('user_id',$this->user_id)->select('id');
+        $ratings = \willvincent\Rateable\Rating::whereIn('rateable_id',$posts)->select('rating');  
+        return $ratings->sum('rating');
+        
+    }
+    
 }
