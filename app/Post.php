@@ -22,8 +22,15 @@ class Post extends Model
     {
         return $this->belongsTo('App\Module');
     }
-    public function comment()
+
+    public function comments()
     {
         return $this->hasMany('App\Comment');
-    }    
+    } 
+    
+    public function files()
+    {
+        return $this->morphMany('App\File', 'foreign');
+    } 
+    
 }

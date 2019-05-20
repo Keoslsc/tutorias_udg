@@ -39,7 +39,9 @@
                                     @else
                                         <a href=" {{ route('profile.show', $user->id) }} "> <h5 class="m-0">{{ $user->name }}</h5> </a>
                                     @endif
-                                    <P class="m-0">{{ $user->profile->career->name }}</P>
+                                    @if(isset($user->profile))
+                                        <P class="m-0">{{ $user->profile->career->name }}</P>
+                                    @endif
                                     <p class="text-muted mb-0">{{ $user->roles->first()->description }}</p>
                                 </div>
                             </div>

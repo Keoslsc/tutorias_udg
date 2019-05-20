@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
 use App\Comment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class CommentController extends Controller
 {
@@ -11,29 +13,27 @@ class CommentController extends Controller
     {
         $this->middleware('auth');
     }
-    public function create(Module $module)
+
+    public function create(Post $post)
     {
-        //
+        return view('comments.commentForm', compact('post'));
     }
 
     public function store(Request $request)
     {
         $request->user()->authorizeRoles(['tutor','student']);
         $this->validatorStore($request->all())->validate();
-
         $comment = new Comment($request->all());
         $comment->save();
+        $post = $comment->post;
+        return redirect()->route('post.show', compact('post'))->with('success', 'Your comment was made.');
+    }
 
-    }
-    public function index(Request $request)
-    {
-        $request->user()->authorizeRoles(['tutor','student']);   
-        $comment = Post::all();
-        return view('comments.commentIndex', compact('comments'));
-    }
+
     protected function validatorStore(array $data)
     {
         return Validator::make($data, [
+            'body' => ['required'],
             'post_id' => ['required', 'exists:posts,id'],
             'user_id' => ['required', 'exists:users,id']
         ]);
