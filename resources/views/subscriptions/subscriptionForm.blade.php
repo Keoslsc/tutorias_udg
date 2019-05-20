@@ -37,7 +37,7 @@
                         <div class="col-6"><a href=" {{ route('module.show', $module->id) }} " class="btn btn-success btn-block" role="button">Explore</a></div>
                     @else
                     <form action="{{ route('subscription.module.store') }}" method="POST" class="row">
-                        <div class="col-6"><button class="btn btn-primary btn-block" type="submit">Join clas</button></div>
+                        <div class="col-6"><button class="btn btn-primary btn-block" type="submit">Join class</button></div>
                         <div class="col-6"><a href="#" class="btn btn-secondary btn-block" role="button">View</a></div>
                     @endif
                         @csrf
