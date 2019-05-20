@@ -1,16 +1,18 @@
 @extends('layouts.app')
 @section('content')
+<div class="container">
 <div class="row justify-content-center m-3">
     <div class="col-md-6">
-            <div class="card">
-                
-                <div class="row justify-content-center  py-2">
-
-                    <div class="col-3"></div>
-                    <div class="col-6 text-center">
-                        <img class="img-avatar" src="{{ Storage::url(Auth::user()->avatar) }}" alt="{{ Auth::user()->name }}" >
+            <div class="card card-profile">
+                <div class="card-header" style="background-image: url({{asset('assets/images/utility/cover_header.png')}});"></div>
+                <div class="card-body justify-content-center py-2">
+                    <div class="row">
+                        <div class="col-3"></div>
+                        <div class="col-6 text-center">
+                            <img class="img-avatar card-profile-img" src="{{ Storage::url(Auth::user()->avatar) }}" alt="{{ Auth::user()->name }}" >
+                        </div>
+                        <div class="col-3"></div>
                     </div>
-                    <div class="col-3"></div>
                     
                 </div>
 
@@ -40,7 +42,7 @@
                                 <div class="col-md-4">
                                 </div>
                                 <div class="col-md-4">
-                                    <a href="{{ route('profile.edit', Auth::user()->profile->user_id) }}" class="btn btn-success btn-block">Edit profile</a>
+                                    <a href="{{ route('profile.edit', Auth::user()->profile->user_id) }}" class="btn btn-primary btn-block">Edit profile</a>
                                 </div>
                         </div>
                     @else
@@ -60,6 +62,7 @@
 
             </div>
     </div>
+</div>
 </div>
 
     

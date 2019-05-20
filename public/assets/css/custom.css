@@ -39,14 +39,14 @@ h1, h4 {
 }
 
 .card-profile .card-header {
-    height: 9rem;
+    height: 10rem;
     background-size: cover;
 }
 
 .card-profile-img {
-    max-height: 140px;
-    max-width: 140px;
-    margin-top: -8rem;
+    /*max-height: 140px;
+    max-width: 140px;*/
+    margin-top: -6rem;
     margin-bottom: 1rem;
     border: 3px solid #fff;
     border-radius: 100%;

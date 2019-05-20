@@ -45,12 +45,16 @@
                         <hr>
                         <div class="row">
                                 <div class="col-4">
-                                    <a href="{{ URL::previous() }}" class="btn btn-danger btn-block">Back</a>
+                                    <a href="{{ URL::previous() }}" class="btn btn-secondary btn-block">Back</a>
                                 </div>
                                 <div class="col-4">
                                 </div>
                                 <div class="col-4">
+<<<<<<< HEAD
+                                    <a href="mailto:{{ $profile->user->email }}" class="btn btn-primary btn-block">Contact <i class="icon-action-redo"></i></a>
+=======
                                     <a href="mailto:{{ $user->email }}" class="btn btn-success btn-block">Contact <i class="icon-action-redo"></i></a>
+>>>>>>> 07c96737dda7f4748ca3a1399879870ef031b5a9
                                 </div>
                         </div>
                     @else

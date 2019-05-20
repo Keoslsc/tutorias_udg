@@ -22,7 +22,7 @@
                                         <td> {{ $convocatory->id }} </td>
                                         <td> {{ $convocatory->start }} </td>
                                         <td> {{ $convocatory->end }} </td>
-                                        <td> <a  class="btn btn-success" href="{{ route('convocatory.show', $convocatory->id) }}"><i class="icon-settings"></i></a></td>
+                                        <td> <a  class="btn btn-success" href="{{ route('convocatory.show', $convocatory->id) }}"><i class="icon-eye"></i></a></td>
                                     </tr>
                                 @endforeach
                             </tbody>
