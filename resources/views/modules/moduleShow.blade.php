@@ -1,17 +1,23 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="m-3 container-fluid">
+
     @if (isset($module))
     <div class="row pb-4">
-        <div class="col-8">
-            <h2><strong>{{ $module->name }}</strong></h2>
-        </div>
-        <div class="col-4">
-            @if(Auth::user()->hasRole('tutor'))
-                <a href=" {{ route('post.create', $module->id) }} " class="btn btn-success float-right">Create post!</a>
-            @endif
-        </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-10 col-xl-10">
+                <h2 class="text-truncate"><strong>{{ $module->name }}</strong></h2>
+            </div>
+            <div class="col-6 col-sm-6 col-md-3 col-lg-1 col-xl-1">
+                @if(Auth::user()->hasRole('tutor'))
+                    <a href=" {{ route('post.create', $module->id) }} " class="btn btn-primary btn-block">Create Post</a>
+                @endif
+            </div>
+            <div class="col-6 col-sm-6 col-md-3 col-lg-1 col-xl-1">
+                <a href=" {{ route('divisions.modules', $module->id) }} " class="btn btn-danger btn-block"> Go Back</a>
+            </div>
+            
     </div>
         
         <div class="row justify-content-center">
@@ -41,19 +47,24 @@
                     </div>
                 @endforeach
             </div>
-            @if (count($module->posts) > 0)
+            @if (isset($module->posts))
                 <div class="col-12 col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 d-none d-sm-block d-block d-sm-nonecol-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 d-none d-sm-block">
                     @foreach ($module->posts as $post)
                         <div class="card">
                             <div class="card-header">
                                 {{ $post->name }}
                                 <div class="card-header-actions">
+                                {{number_format($post->averageRating, 1, '.', '')}}
+                                 
+                                 <!--value=-->
+                                    @for ($i = 0; $i < round( $post->averageRating ,0); $i++)
                                     <i class="fa fa-star fa-lg" style="color:#d8ca5d"></i>
-                                    <i class="fa fa-star fa-lg" style="color:#d8ca5d"></i>
-                                    <i class="fa fa-star fa-lg" style="color:#d8ca5d"></i>
-                                    <i class="fa fa-star fa-lg" style="color:#d8ca5d"></i>
-                                    <i class="fa fa-star fa-lg" style="color:#d8ca5d"></i>
-                                </div>
+                                    @endfor
+                                    @for ($i = round($post->averageRating,0); $i < 5 ;$i++)
+                                    <i class="fa fa-star fa-lg" style="color:#afac95"></i>
+                                    @endfor
+                                                                    
+                                 </div>
                             </div>
                             <div class="card-body">
                                 <p class="text-muted">{{ $post->description }}</p>
@@ -109,4 +120,7 @@
         <h3 class="text-center"> There are no data!</h3>
     @endif
 </div>
+
+
+
 @endsection

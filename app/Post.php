@@ -1,11 +1,14 @@
 <?php
 
 namespace App;
-
+use willvincent\Rateable\Rateable;
 use Illuminate\Database\Eloquent\Model;
+
 
 class Post extends Model
 {
+    use Rateable;
+
     protected $fillable = [
         'id', 'name', 'description', 'user_id', 'module_id', 'created_at'
     ];
@@ -19,9 +22,12 @@ class Post extends Model
     {
         return $this->belongsTo('App\Module');
     }
-
+    public function comment()
+    {
+        return $this->hasMany('App\Comment');
+    }
     public function files()
     {
-        return $this->morphMany('App\File', 'foreign');
+        return $this->morphMany('App\File','foreign');
     }
 }

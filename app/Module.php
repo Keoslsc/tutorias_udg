@@ -25,7 +25,7 @@ class Module extends Model
     //Files
     public function files()
     {
-        return $this->morphMany('App\File', 'modelo');
+        return $this->morphMany('App\File', 'foreign');
     }
 
     //Posts

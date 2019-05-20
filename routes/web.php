@@ -32,12 +32,14 @@ Route::resource('profile', 'ProfileController')->middleware('verified');
 //Division
 Route::resource('division', 'DivisionController',  ['except' => ['show']])->middleware('verified');
 Route::get('division/modules/{division}', 'DivisionController@IndexModulesFromDivision')->middleware('verified')->name('divisions.modules');
+Route::get('division}', ['uses' => 'DivisionController@show'])->middleware('verified')->name('division.show');
 
 //Career
 Route::resource('career', 'CareerController', ['except' => ['show']])->middleware('verified');
 
 //Module
 Route::resource('module', 'ModuleController')->middleware('verified');
+Route::get('module/{module}', ['uses' => 'ModuleController@show'])->middleware('verified')->name('module.show');
 
 //Subscription
 Route::post('subscription',['uses' => 'SubscriptionController@store'])->name('subscription.module.store');
@@ -48,7 +50,7 @@ Route::get('post/new/{module}', ['uses' => 'PostController@create'])->middleware
 Route::post('post', ['uses' => 'PostController@store'])->middleware('verified')->name('post.store');
 Route::get('post/{post}', ['uses' => 'PostController@show'])->middleware('verified')->name('post.show');
 Route::get('post/delete/{post}', ['uses' => 'PostController@destroy'])->middleware('verified')->name('post.delete');
-
+Route::post('posts', 'PostController@postPost')->name('posts.post');
 //File
 Route::resource('file', 'FileController', ['except' => ['create', 'store', 'edit', 'update']]);
 
