@@ -3,12 +3,7 @@
 @section('content')
 <div class="m-3 container-fluid">
     <div class="row pb-3">
-<<<<<<< HEAD
-        <div class="col-8 col-sm-8 col-md-9 col-lg-11 col-xl-11"></div>
-        <div class="col-4 col-sm-4 col-md-3 col-lg-1 col-xl-1">
-            <a href=" {{ route('module.show', $post->module) }} " class="btn btn-dark btn-block">Go back</a>
-            
-=======
+
         <div class="col-4 col-sm-4 col-md-6 col-lg-8 col-xl-8">
 
         </div>
@@ -17,7 +12,6 @@
         </div>
         <div class="col-4 col-sm-4 col-md-3 col-lg-2 col-xl-2">
             <a href=" {{ route('module.show', $post->module) }} " class="btn btn-danger btn-block">Go back</a>
->>>>>>> 07c96737dda7f4748ca3a1399879870ef031b5a9
         </div>
     </div>
     <div class="row justify-content-center">
