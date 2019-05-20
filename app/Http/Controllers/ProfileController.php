@@ -36,10 +36,10 @@ class ProfileController extends Controller
         return view('profiles.profileForm', compact('profile', 'careers'));
     }
 
-    public function show(Profile $profile)
+    public function show(User $user)
     {
-        $profile->load(['user', 'career']);
-        return view('profiles.profileShow', compact('profile'));
+        $user->load(['profile', 'profile.career', 'roles']);
+        return view('profiles.profileShow', compact('user'));
     }
 
     public function create()
