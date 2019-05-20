@@ -96,9 +96,11 @@
                 
             @elseif(Auth::user()->hasRole('tutor'))
             <!-- Tutor -->
-
-                
-
+                <li class="nav-item">
+                    <a class="nav-link active" href="{{ route('report.show', Auth::user()) }}">
+                        <i class="nav-icon icon-chart"></i> Generate Report
+                    </a>
+                </li>
             @else
             <!-- Student -->
             @endif

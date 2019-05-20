@@ -21,7 +21,6 @@
         @else
             <h3 class="text-center"> There are no data!</h3>
         @endif
-        </div>
-                
+        </div>  
     </div>
 @endsection
