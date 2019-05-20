@@ -12,14 +12,14 @@
                     @else
                     <form action="{{ route('subscription.module.store') }}" method="POST" class="row">
                         <div class="col-6"><button class="btn btn-primary btn-block" type="submit">Subscription</button></div>
-                        <div class="col-6"><a href="#" class="btn btn-secondary btn-block" role="button">View</a></div>
+                        <div class="col-6"><a href="{{ route('module.show', $module->id) }}" class="btn btn-secondary btn-block" role="button">View</a></div>
 
                     @endif
                         @csrf
                         <input type="hidden" name="user_id" value="{{ $user->id }}">
                         <input type="hidden" name="module_id" value="{{ $module->id }}">
                     </form>
-                    <p class="card-text"><small class="text-muted">Last tutors: 0</small></p>
+                    <p class="card-text pt-3"><small class="text-muted">Users: {{ $module->users->count() }}</small></p>
                 </div>  
             </div>
         @endif
@@ -38,13 +38,13 @@
                     @else
                     <form action="{{ route('subscription.module.store') }}" method="POST" class="row">
                         <div class="col-6"><button class="btn btn-primary btn-block" type="submit">Join clas</button></div>
-                        <div class="col-6"><a href="#" class="btn btn-secondary btn-block" role="button">View</a></div>
+                        <div class="col-6"><a href="{{ route('module.show', $module->id) }}" class="btn btn-secondary btn-block" role="button">View</a></div>
                     @endif
                         @csrf
                         <input type="hidden" name="user_id" value="{{ $user->id }}">
                         <input type="hidden" name="module_id" value="{{ $module->id }}">
                     </form>
-                    <p class="card-text"><small class="text-muted">Last tutors: 0</small></p>
+                    <p class="card-text pt-3"><small class="text-muted">Users: {{ $module->users->count() }}</small></p>
                 </div>  
             </div>
         @endif

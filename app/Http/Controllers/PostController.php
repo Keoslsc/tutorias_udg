@@ -25,6 +25,7 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
+        $this->authorize('subscribe', $post->module);
         $request->user()->authorizeRoles(['tutor']);  
         $this->validatorStore($request->all())->validate();
         $post = new Post($request->all());
@@ -64,6 +65,7 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $module = $post->module;
+        $this->authorize('subscribe', $post->module);
         $this->authorize('owner', $post);
         foreach ($post->files as $file) {
             Storage::delete($file->hashed);

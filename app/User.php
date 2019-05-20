@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Role;
+use App\Post;
 use QCod\ImageUp\HasImageUploads;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -132,16 +133,35 @@ class User extends Authenticatable implements MustVerifyEmail
     }
     
     public function aveg(){  
-        $posts = Post::where('user_id',$this->user_id)->select('id');
+        $posts = Post::where('user_id',$this->id)->select('id');
         $ratings = \willvincent\Rateable\Rating::whereIn('rateable_id',$posts)->select('rating');  
         return $ratings->avg('rating');
         
     }
+
     public function suma(){  
-        $posts = Post::where('user_id',$this->user_id)->select('id');
-        $ratings = \willvincent\Rateable\Rating::whereIn('rateable_id',$posts)->select('rating');  
+        $posts = Post::where('user_id',$this->id)->select('id');
+        $ratings = \willvincent\Rateable\Rating::whereIn('rateable_id', $posts)->select('rating');  
         return $ratings->sum('rating');
         
+    }
+
+    public function totalComments()
+    {
+        $comments = 0;
+        foreach ($this->posts as $post) {
+            $comments += $post->comments->count();
+        }
+        return $comments;
+    }
+
+    public function totalFiles()
+    {
+        $files = 0;
+        foreach ($this->posts as $post) {
+            $files += $post->files->count();
+        }
+        return $files;
     }
     
 }

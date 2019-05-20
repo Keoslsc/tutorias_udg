@@ -60,6 +60,9 @@ Route::resource('file', 'FileController', ['except' => ['create', 'store', 'edit
 Route::resource('comment', 'CommentController', ['except' => ['index', 'show', 'create', 'edit', 'update']]);
 Route::get('comment/create/{post}', ['uses' => 'CommentController@create'])->name('comment.create')->middleware('verified');
 
+//Report 
+Route::get('report/{user}', ['uses' => 'ReportController@show'])->name('report.show')->middleware('verified');
+
 Auth::routes(['verify' => true]);
 
 

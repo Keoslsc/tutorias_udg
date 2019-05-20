@@ -6,18 +6,19 @@
 
     @if (isset($module))
     <div class="row pb-4">
-            <div class="col-12 col-sm-12 col-md-6 col-lg-10 col-xl-10">
-                <h2 class="text-truncate"><strong>{{ $module->name }}</strong></h2>
-            </div>
-            <div class="col-6 col-sm-6 col-md-3 col-lg-1 col-xl-1">
-                @if(Auth::user()->hasRole('tutor'))
-                    <a href=" {{ route('post.create', $module->id) }} " class="btn btn-primary btn-block">Create Post</a>
-                @endif
-            </div>
-            <div class="col-6 col-sm-6 col-md-3 col-lg-1 col-xl-1">
-                <a href=" {{ route('divisions.modules', $module->id) }} " class="btn btn-danger btn-block"> Go Back</a>
-            </div>
-            
+        <div class="col-12 col-sm-12 col-md-6 col-lg-10 col-xl-10">
+            <h2 class="text-truncate"><strong>{{ $module->name }}</strong></h2>
+        </div>
+        <div class="col-6 col-sm-6 col-md-3 col-lg-1 col-xl-1">
+        @can('subscribe', $module)
+            @if(Auth::user()->hasRole('tutor'))
+                <a href=" {{ route('post.create', $module->id) }} " class="btn btn-primary btn-block">Create Post</a>
+            @endif
+        @endcan
+        </div>
+        <div class="col-6 col-sm-6 col-md-3 col-lg-1 col-xl-1">
+            <a href=" {{ route('divisions.modules', $module->division->id) }} " class="btn btn-danger btn-block"> Go Back</a>
+        </div>
     </div>
         
         <div class="row justify-content-center">
@@ -69,11 +70,10 @@
                                  </div>
                             </div>
                             <div class="card-body">
-                                <p class="text-muted">{{ $post->description }}</p>
+                                <p class="text-muted text-truncate">{{ $post->description }}</p>
                             </div>
                             <div class="card-footer">
                                 <div class="row">
-                                    
                                     @can('owner', $post)
                                         <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-8">
                                             @if ($post->user->id == Auth::user()->id )
@@ -83,13 +83,14 @@
                                             @endif
                                         </div>
                                         
-                                        <div class="col-6 col-sm-6 col-md-3 col-lg-3 col-xl-2">
-                                            <a href=" {{ route('post.delete', $post->id) }} " class="btn btn-danger btn-block">Delete</a>
-                                        </div>
-                                        <div class="col-6 col-sm-6 col-md-3 col-lg-3 col-xl-2">
-                                            <a href=" {{ route('post.show', $post->id) }} " class="btn btn-success btn-block">View</a>
-                                        </div>
-                                   
+                                        @can('subscribe', $module)
+                                            <div class="col-6 col-sm-6 col-md-3 col-lg-3 col-xl-2">
+                                                <a href=" {{ route('post.delete', $post->id) }} " class="btn btn-danger btn-block">Delete</a>
+                                            </div>
+                                            <div class="col-6 col-sm-6 col-md-3 col-lg-3 col-xl-2">
+                                                <a href=" {{ route('post.show', $post->id) }} " class="btn btn-success btn-block">View</a>
+                                            </div>
+                                        @endcan
                                         
                                     @else
                                     <div class="col-7 col-sm-7 col-md-8 col-lg-9 col-xl-10">
@@ -100,9 +101,12 @@
                                         @endif
                                     </div>
                                     
-                                    <div class="col-5 col-sm-5 col-md-4 col-lg-3 col-xl-2">
-                                        <a href=" {{ route('post.show', $post->id) }} " class="btn btn-success btn-block">View</a>
-                                    </div>
+                                    @can('subscribe', $module)
+                                        <div class="col-5 col-sm-5 col-md-4 col-lg-3 col-xl-2">
+                                            <a href=" {{ route('post.show', $post->id) }} " class="btn btn-success btn-block">View</a>
+                                        </div>
+                                    @endcan
+
                                     @endcan
                                     
                                 </div>
