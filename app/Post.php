@@ -32,5 +32,4 @@ class Post extends Model
     {
         return $this->morphMany('App\File', 'foreign');
     } 
-    
 }
