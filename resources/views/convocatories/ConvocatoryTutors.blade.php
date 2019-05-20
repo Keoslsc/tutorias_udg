@@ -45,11 +45,11 @@
                                         <td> {{ $tutor->name }} </td>
                                         <td> {{ $tutor->email }} </td>
                                         <td> {{ $tutor->pivot->created_at }} </td>
-                                        @if( $tutor->status === 1)
+                                        @if( $tutor->status == 1)
                                             <td><span class="badge badge-success">APROVED</span></td>
                                             <td>Not available</td>
                                             <td>Not available</td>
-                                        @elseif($tutor->status  === 2)
+                                        @elseif($tutor->status  == 2)
                                             <td><span class="badge badge-primary">PENDING</span></td>
                                             <td>
                                                 <button type="button" data-toggle="modal" data-target="#modalApproved" class="btn btn-success">
@@ -113,7 +113,7 @@
                                                     @csrf
                                                 </form>
                                             </td>
-                                        @elseif($tutor->status  === 3)
+                                        @elseif($tutor->status  == 3)
                                             <td><span class="badge badge-danger">DECLINED</span></td>
                                             <td>Not available</td>
                                             <td>Not available</td>

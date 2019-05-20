@@ -22,7 +22,7 @@
                                     <td>{{ $division->id }}</td>
                                     <td>{{ $division->created_at }}</td>
                                     <td>{{ $division->description }}</td>
-                                    @if( $division->status === 1)
+                                    @if( $division->status == 1)
                                         <td><span class="badge badge-success">ACTIVE</span></td>
                                     @else
                                         <td><span class="badge badge-danger">INACTIVE</span></td>
