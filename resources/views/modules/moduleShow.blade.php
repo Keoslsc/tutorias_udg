@@ -15,7 +15,7 @@
                 @endif
             </div>
             <div class="col-6 col-sm-6 col-md-3 col-lg-1 col-xl-1">
-                <a href=" {{ route('divisions.modules', $module->id) }} " class="btn btn-danger btn-block"> Go Back</a>
+                <a href=" {{ route('divisions.modules', $module->id) }} " class="btn btn-dark btn-block"> Go Back</a>
             </div>
             
     </div>
