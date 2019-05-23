@@ -72,7 +72,6 @@ class ConvocatoryController extends Controller
      */
     public function show(Request $request, Convocatory $convocatory)
     {
-        $request->user()->authorizeRoles(['student', 'tutor', 'admin']);
         return view('convocatories.convocatoryShow', compact('convocatory'));
     }
 

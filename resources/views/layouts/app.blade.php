@@ -22,19 +22,15 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/css/custom.css') }}" rel="stylesheet">
 
 </head>
 <body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
         @guest
-            <div class="container-fluid">
-                <div class="animated fadeIn">
-                    <div class="m-5">
-                        @yield('auth')
-                    </div>
+            <div class="animated fadeIn">
+                <div class="m-5">
+                    @yield('auth')
                 </div>
             </div>
-            
         @else
             <!-- Header Status-->
             @include('layouts.header')

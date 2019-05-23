@@ -23,17 +23,6 @@
                     <h4>Information: </h4>
                     <h5 class="card-text"><i class="icon-envelope-open"></i> {{ $user->email }} </h5>
                     <h5 class="card-text"><i class="icon-badge"></i> {{ $user->roles->first()->description }} </h5>
-                    @if($user->roles->first()->description == 'Tutor')                                   
-                    <h5 class="card-text"><i class="icon-star"></i>    Rating: 
-                                    @for ($i = 0; $i < round( $user->aveg() ,0); $i++)
-                                    <i class="fa fa-star fa-lg" style="color:#d8ca5d"></i>
-                                    @endfor
-                                    @for ($i = round($user->aveg(),0); $i < 5 ;$i++)
-                                    <i class="fa fa-star fa-lg" style="color:#afac95"></i>
-                                    @endfor
-                                    {{number_format($user->aveg(), 1, '.', '')}}
-                    </h5> 
-                    @endif
                     <hr>                   
                     @if(isset($user->profile))
                         <h4>About me: </h4>
@@ -50,7 +39,6 @@
                                 <div class="col-4">
                                 </div>
                                 <div class="col-4">
-
                                     <a href="mailto:{{ $user->email }}" class="btn btn-success btn-block">Contact <i class="icon-action-redo"></i></a>
                                 </div>
                         </div>

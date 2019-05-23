@@ -19,7 +19,6 @@
                             <th>Total interactions</th>
                             <th>Total files</th>
                             <th>Total classes</th>
-                            <th>Average of posts </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -28,7 +27,6 @@
                             <td>{{ $user->totalComments() }}</td>
                             <td>{{ $user->totalFiles() }}</td>
                             <td>{{ $user->modules->count() }}</td>
-                            <td>{{  round( $user->aveg() , 1) }} / 5</td>
                         </tr>
                     </tbody>
                 </table>
