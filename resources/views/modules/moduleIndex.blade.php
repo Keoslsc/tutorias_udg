@@ -26,7 +26,7 @@
                                     <td>{{ $module->created_at }}</td>
                                     <td>{{ $module->name }}</td>
                                     <td>{{ $module->division->description }}</td>
-                                    @if( $module->status === 1)
+                                    @if( $module->status == 1)
                                         <td><span class="badge badge-success">ACTIVE</span></td>
                                         <td><a class="btn btn-primary btn-block" href="{{ route('module.edit', $module->id) }}"><i class="icon-pencil"></i></a></td>
                                         <td>

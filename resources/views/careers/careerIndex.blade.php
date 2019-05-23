@@ -25,7 +25,7 @@
                                     <td>{{ $career->created_at }}</td>
                                     <td>{{ $career->name }}</td>
                                     <td>{{ $career->division->description }}</td>
-                                    @if( $career->status === 1)
+                                    @if( $career->status == 1)
                                         <td><span class="badge badge-success">ACTIVE</span></td>
                                         <td><a class="btn btn-primary btn-block" href="{{ route('career.edit', $career->id) }}"><i class="icon-pencil"></i></a></td>
                                         <td>
