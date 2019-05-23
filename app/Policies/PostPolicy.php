@@ -23,7 +23,7 @@ class PostPolicy
 
     public function owner(User $user, Post $post)
     {
-        return $user->id === $post->user_id;
+        return $user->id == $post->user_id;
     }
 
     public function subscribe(User $user, Module $module)
