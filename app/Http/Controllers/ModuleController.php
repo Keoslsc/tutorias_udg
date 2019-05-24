@@ -27,7 +27,7 @@ class ModuleController extends Controller
      */
     public function index()
     {
-        $modules = Module::with(['division', 'users'])->get();
+        $modules = Module::with(['division', 'users'])->paginate(10);
         return view('modules.moduleIndex', compact('modules'));
     }
 
@@ -67,7 +67,7 @@ class ModuleController extends Controller
      */
     public function show(Module $module)
     {
-        $module->load(['users', 'users.profile', 'users.profile.career', 'users.roles', 'posts.user', 'posts']);
+        $module->load(['users', 'users.profile', 'users.profile.career', 'users.role', 'posts.user', 'posts']);
         return view('modules.moduleShow', compact('module'));
     }
 

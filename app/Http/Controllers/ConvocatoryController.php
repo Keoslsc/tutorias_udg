@@ -24,7 +24,7 @@ class ConvocatoryController extends Controller
     public function index(Request $request)
     {
         $request->user()->authorizeRoles(['admin']);   
-        $convocatories = Convocatory::orderBy('start', "DESC")->get();
+        $convocatories = Convocatory::orderBy('start', "DESC")->paginate(10);
         return view('convocatories.convocatoryIndex', compact('convocatories'));
     }
 
@@ -59,7 +59,7 @@ class ConvocatoryController extends Controller
             $convocatory->written = $request->written;
             $convocatory->save();
             
-            return back()->with('success', 'Data inserted Successfully');
+            return redirect()->route('convocatory.index')->with('success', 'Data inserted Successfully');
         }
         
     }

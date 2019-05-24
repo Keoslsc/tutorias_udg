@@ -2,9 +2,10 @@
 
 @section('content')
     <div class="container">
-        @if (isset($convocatories))
+        @if (count($convocatories) > 0)
             <div class="row justify-content-center m-3">
                 <div class="col-9 text-center">
+                    @include('messages.messages')
                     <h3>Convocatories</h3>
                     <div class="table-responsive">
                         <table class="table table-hover table-bordered">
@@ -27,11 +28,13 @@
                                 @endforeach
                             </tbody>
                         </table>
+
+                        {!! $convocatories->render() !!}
                     </div>
                 </div>
             </div>
         @else
-            <h3 class="text-center"> There are no data!</h3>
+            <h3 class="text-center pt-5"> There are no data!</h3>
         @endif
     </div>
 @endsection

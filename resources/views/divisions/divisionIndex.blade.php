@@ -50,6 +50,7 @@
                         </tbody>
                         
                     </table>
+                    {!! $divisions->render() !!}
                 </div>
             </div>
         @else
