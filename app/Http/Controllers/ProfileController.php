@@ -62,7 +62,7 @@ class ProfileController extends Controller
         }
         $profile = new Profile($request->all());
         $user->profile()->save($profile);
-        return redirect()->route('profile.index');
+        return redirect()->route('profile.index')->with('success','You have successfully created the profile.');
     }
 
     public function update(Request $request, Profile $profile)
@@ -78,7 +78,7 @@ class ProfileController extends Controller
             $user->save();
         }
         $profile->fill($request->all())->save();
-        return back()->with('success','You have successfully updated the profile.');
+        return redirect()->route('profile.index')->with('success','You have successfully updated the profile.');
     }
 
 

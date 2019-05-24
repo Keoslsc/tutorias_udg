@@ -16,7 +16,7 @@
                                 <th>Division</th>
                                 <th>Status</th>
                                 <th>Edit</th>
-                                <th>Delete</th>
+                                <th>Active / Inactive</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -39,7 +39,13 @@
                                     @else
                                         <td><span class="badge badge-danger">INACTIVE</span></td>
                                         <td><button type="button" class="btn btn-primary btn-block" disabled><i class="icon-pencil"></i></button></td>
-                                        <td><button type="button" class="btn btn-danger btn-block" disabled><i class="icon-trash"></i></button></td>
+                                        <td>
+                                            <form action="{{ route('module.destroy', $module->id) }}" method="POST">
+                                                    <input type="hidden" name="_method" value="DELETE">
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-success btn-block"><i class="icon-check"></i></button>
+                                            </form>
+                                        </td>
                                     @endif
                                     
                                 </tr>

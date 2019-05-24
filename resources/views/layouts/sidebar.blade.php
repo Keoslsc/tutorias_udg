@@ -7,7 +7,6 @@
                     <i class="nav-icon icon-home"></i> Home
                 </a>
             </li>
-        
             @if(Auth::user()->hasRole('admin'))
             <!-- Admin -->
                 <li class="nav-item">
@@ -103,7 +102,7 @@
                 </li>
             @else
             <!-- Student -->
-            @endif
+            @endcan
 
 
 

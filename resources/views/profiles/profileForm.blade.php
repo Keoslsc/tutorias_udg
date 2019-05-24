@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <div class="row justify-content-center">
-    <div class="col-md-6">
+    <div class="col-12 col-sm-12 col-md-8 col-lg-9 col-xl-5">
         
         <div class="row justify-content-center">
             <div class="col-md-4 m-2 text-center">
@@ -9,7 +9,7 @@
             </div>
         </div>
         <div class="card">
-        @include('messages.messages')
+                
         @if(isset($profile))
             <form action="{{ route('profile.update', $profile->user_id) }}" method="POST" class="card-body" enctype="multipart/form-data">
                 <input type="hidden" name="_method" value="PATCH">
@@ -152,11 +152,11 @@
                 <!-- Buttons -->
                 <div class="row">
                     <div class="col-5">
-                        <button type="submit" class="btn btn-primary btn-block">Save</button>
+                        <a href="{{ route('profile.index') }}" class="btn btn-danger btn-block">Cancel</a>
                     </div>
                     <div class="col-2"></div>
                     <div class="col-5">
-                            <a href="{{ route('profile.index') }}" class="btn btn-secondary btn-block">Cancel</a>
+                        <button type="submit" class="btn btn-primary btn-block">Save</button>
                     </div>
                 </div>
                 
