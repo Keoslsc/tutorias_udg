@@ -43,7 +43,7 @@
                                     @if(isset($user->profile))
                                         <P class="m-0">{{ $user->profile->career->name }}</P>
                                     @endif
-                                    <p class="text-muted mb-0">{{ $user->roles->first()->description }}</p>
+                                    <p class="text-muted mb-0">{{ $user->role->description }}</p>
                                 </div>
                             </div>
                         </div>

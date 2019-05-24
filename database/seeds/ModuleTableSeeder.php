@@ -38,6 +38,31 @@ class ModuleTableSeeder extends Seeder
         $module->save();
 
         $module = new Module();
+        $module->name = 'Metodos Matematicos I';
+        $module->division_id = '1';
+        $module->save();
+
+        $module = new Module();
+        $module->name = 'Metodos Matematicos II';
+        $module->division_id = '1';
+        $module->save();
+
+        $module = new Module();
+        $module->name = 'Metodos Matematicos III';
+        $module->division_id = '1';
+        $module->save();
+
+        $module = new Module();
+        $module->name = 'Estructuras de datos I';
+        $module->division_id = '1';
+        $module->save();
+
+        $module = new Module();
+        $module->name = 'Simulacion por computadora';
+        $module->division_id = '1';
+        $module->save();
+
+        $module = new Module();
         $module->name = 'Matematicas I';
         $module->division_id = '2';
         $module->save();

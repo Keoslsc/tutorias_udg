@@ -1,9 +1,11 @@
 @if($user->hasRole('student'))
     @foreach ($division->modules as $module)
         @if($module->status)
-            <div class="card" style="max-width: 18rem;">
+            <div class="card" style="max-width: 18rem; min-height: 10rem">
+                <div class="card-header">
+                    <h5 class="card-title text-center  text-truncate">{{ $module->name }}</h5>
+                </div>
                 <div class="card-body">
-                    <h5 class="card-title text-center">{{ $module->name }}</h5>
                     @if ( count($user->modules->where('id', $module->id)) > 0 ) 
                     <form action="{{ route('subscription.module.destroy') }}" method="POST" class="row">
                         <input type="hidden" name="_method" value="DELETE">
@@ -19,7 +21,6 @@
                         <input type="hidden" name="user_id" value="{{ $user->id }}">
                         <input type="hidden" name="module_id" value="{{ $module->id }}">
                     </form>
-                    <p class="card-text pt-3"><small class="text-muted">Users: {{ $module->users->count() }}</small></p>
                 </div>  
             </div>
         @endif
@@ -27,9 +28,11 @@
 @else            
     @foreach ($division->modules as $module)
         @if($module->status)
-            <div class="card" style="max-width: 18rem;">
-                <div class="card-body">
+            <div class="card" style="max-width: 18rem; min-height: 10rem;">
+                <div class="card-header">
                     <h5 class="card-title text-center">{{ $module->name }}</h5>
+                </div>
+                <div class="card-body">
                     @if ( count($user->modules->where('id', $module->id)) > 0 ) 
                     <form action="{{ route('subscription.module.destroy') }}" method="POST" class="row">
                         <input type="hidden" name="_method" value="DELETE">

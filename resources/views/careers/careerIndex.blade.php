@@ -54,6 +54,7 @@
                         </tbody>
                         
                     </table>
+                    {!! $careers->render() !!}
                 </div>
             </div>
         @else

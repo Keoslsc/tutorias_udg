@@ -53,6 +53,7 @@
                         </tbody>
                         
                     </table>
+                    {!! $modules->render() !!}
                 </div>
             </div>
         @else
