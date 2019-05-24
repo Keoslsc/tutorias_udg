@@ -116,13 +116,11 @@ class RegisterController extends Controller
     {
         $user = User::create([
             'name' => $data['name'],
+            'role_id' => 3,
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'status' => 1
         ]);
-        $user
-            ->roles()
-            ->attach(Role::where('name', 'student')->first());
         return $user;
     }
 
@@ -130,13 +128,11 @@ class RegisterController extends Controller
     {
         $user = User::create([
             'name' => $data['name'],
+            'role_id' => 2,
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'status' => 2
         ]);
-        $user
-            ->roles()
-            ->attach(Role::where('name', 'tutor')->first());
         $user
             ->convocatories()
             ->attach(Convocatory::where('id', $data['convocatory_id'])->first());

@@ -60,15 +60,15 @@
                                         </div>
                                     </div>
                                 <div class="col-md-5">
-                                    <button type="submit" class="btn btn-primary btn-block">
-                                            {{ __('Save') }}
-                                    </button>
+                                    <a href="{{ route('module.index') }}" class="btn btn-danger btn-block">
+                                            {{ __('Cancel') }}
+                                    </a>
                                 </div>
                                 <div class="col-md-2"></div>
                                 <div class="col-md-5">
-                                    <a href="{{ route('module.index') }}" class="btn btn-secondary btn-block">
-                                            {{ __('Cancel') }}
-                                    </a>
+                                    <button type="submit" class="btn btn-primary btn-block">
+                                            {{ __('Save') }}
+                                    </button>
                                 </div>
 
                             </div>

@@ -3,21 +3,15 @@
 @section('content')
 <div class="m-3 container-fluid">
     <div class="row pb-3">
-<<<<<<< HEAD
-        <div class="col-8 col-sm-8 col-md-9 col-lg-11 col-xl-11"></div>
-        <div class="col-4 col-sm-4 col-md-3 col-lg-1 col-xl-1">
-            <a href=" {{ route('module.show', $post->module) }} " class="btn btn-dark btn-block">Go back</a>
-            
-=======
+
         <div class="col-4 col-sm-4 col-md-6 col-lg-8 col-xl-8">
 
         </div>
         <div class="col-4 col-sm-4 col-md-3 col-lg-2 col-xl-2">
-            <a href=" {{ route('comment.create', $post->id) }} " class="btn btn-success btn-block">Comment</a>
+            
         </div>
         <div class="col-4 col-sm-4 col-md-3 col-lg-2 col-xl-2">
             <a href=" {{ route('module.show', $post->module) }} " class="btn btn-danger btn-block">Go back</a>
->>>>>>> 07c96737dda7f4748ca3a1399879870ef031b5a9
         </div>
     </div>
     <div class="row justify-content-center">
@@ -81,25 +75,9 @@
                         </div>
                     @endif
                 </div>
-                <div class="card-footer text-muted">                
-                    <form action="{{ route('posts.post') }}" method="POST">
-                    {{ csrf_field() }}
-                    @for ($i = 0; $i < round( $post->averageRating ,0); $i++)
-                                    <i class="fa fa-star fa-lg" style="color:#d8ca5d"></i>
-                                    @endfor
-                    @for ($i = round($post->averageRating,0); $i < 5 ;$i++)
-                                    <i class="fa fa-star fa-lg" style="color:#afac95"></i>
-                    @endfor
-                    {{number_format($post->averageRating, 1, '.', '')}}
-                        <input type="number" id="input" name="rate" min="1" max="5" style="width:3rem" required>                        
-                        <input type="hidden" name="id" required="" value="{{ $post->id }}">
-                        <button class="btn btn-success">Rate</button>
-                    <form>
-                </div>
-                
-                {{--<div class="card-footer">
+                {<div class="card-footer">
                     @include('comments.commentForm', $post)
-                </div>--}}
+                </div>
                 <div class="pre-scrollable">
                         @foreach ($post->comments as $comment)
                         <div class="card-footer">

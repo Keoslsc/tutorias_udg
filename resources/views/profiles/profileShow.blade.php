@@ -2,10 +2,9 @@
 @section('content')
 <div class="row justify-content-center m-3">
     <div class="col-md-6">
+            
             <div class="card">
-                
-                <div class="row justify-content-center  py-2">
-
+                <div class="row justify-content-center py-2">
                     <div class="col-3"></div>
                     <div class="col-6 text-center">
                         <img class="img-avatar" src="{{ Storage::url($user->avatar) }}" alt="{{ $user->name }}" >
@@ -22,7 +21,7 @@
                 <div class="card-body">
                     <h4>Information: </h4>
                     <h5 class="card-text"><i class="icon-envelope-open"></i> {{ $user->email }} </h5>
-                    <h5 class="card-text"><i class="icon-badge"></i> {{ $user->roles->first()->description }} </h5>
+                    <h5 class="card-text"><i class="icon-badge"></i> {{ $user->role->description }} </h5>
                     <hr>                   
                     @if(isset($user->profile))
                         <h4>About me: </h4>
@@ -30,7 +29,7 @@
                         <h5 class="card-text"><i class="icon-heart"></i><strong> Bio: </strong> {{ $user->profile->about_me }}</h5>
                         <h5 class="card-text"><i class="icon-screen-smartphone"></i><strong> Cellphone: </strong> {{ $user->profile->cellphone }}</h5>
                         <h5 class="card-text"><i class="icon-chemistry"></i><strong> Career: </strong> {{ $user->profile->career->name }}</h5>
-                        <h5 class="card-text"><i class="icon-people"></i><strong> Gender: </strong> {{ $user->profile->G }}</h5>
+                        <h5 class="card-text"><i class="icon-people"></i><strong> Gender: </strong> {{ $user->profile->getGenderComplete() }}</h5>
                         <hr>
                         <div class="row">
                                 <div class="col-4">
@@ -48,7 +47,7 @@
                                 <h4>No data</h4>
                             </div>
                             <div class="col-4">
-                                    <a href="{{ URL::previous() }}" class="btn btn-danger btn-block">Back</a>
+                                <a href="{{ URL::previous() }}" class="btn btn-danger btn-block">Back</a>
                             </div>
                             <div class="col-4">
                             </div>

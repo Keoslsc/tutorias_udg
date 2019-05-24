@@ -21,4 +21,19 @@ class Profile extends Model
     {
         return $this->belongsTo('App\Career');
     }
+
+    public function getGenderComplete()
+    {
+        $gender = "";
+        if($this->G == "M"){
+            $gender = "Male";
+        }
+        else if($this->G == "F"){
+            $gender = "Female";
+        }
+        else{
+            $gender = "No define";
+        }
+        return $gender;
+    }
 }

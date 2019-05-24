@@ -39,7 +39,7 @@ class ModuleController extends Controller
     public function create(Request $request)
     {
         $request->user()->authorizeRoles(['admin']);  
-        $divisions = Division::all();
+        $divisions = Division::where('status', 1)->get();
         return view('modules.moduleForm', compact('divisions'));
     }
 
@@ -55,8 +55,8 @@ class ModuleController extends Controller
         $this->validatorStore($request->all())->validate();
         $module = new Module($request->all());
         $module->save();
-        
-        return back()->with('success', 'Data inserted Successfully');
+        $modules = Module::with(['division', 'users'])->get();
+        return redirect()->route('module.index')->with('success', 'Data inserted Successfully');
     }
 
     /**
@@ -79,7 +79,6 @@ class ModuleController extends Controller
      */
     public function edit(Module $module)
     {
-        
         $divisions = Division::all();
         return view('modules.moduleForm', compact('module', 'divisions'));
     }
@@ -96,7 +95,7 @@ class ModuleController extends Controller
         $request->user()->authorizeRoles(['admin']);  
         $this->validatorStore($request->all())->validate();
         $module->fill($request->all())->save();
-        return redirect()->route('module.index');
+        return redirect()->route('module.index')->with('success', 'Data updated Successfully');
     }
 
     /**
@@ -108,9 +107,21 @@ class ModuleController extends Controller
     public function destroy(Request $request, Module $module)
     {
         $request->user()->authorizeRoles(['admin']);  
-        $module->status = 0;
+        $response = '';
+        $message = '';
+        if($module->status){
+            $module->status = 0;
+            $response = 'error';
+            $message = 'You have deactivated the module correctly';
+        }
+        else{
+            $module->status = 1;
+            $response = 'success';
+            $message = 'You have activated the module correctly';
+        }
+        
         $module->save();
-        return redirect()->route('module.index');
+        return redirect()->route('module.index')->with($response, $message);
     }
 
     protected function validatorStore(array $data)

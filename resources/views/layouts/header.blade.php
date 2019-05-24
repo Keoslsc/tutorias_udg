@@ -17,7 +17,7 @@
             <div class="dropdown-menu dropdown-menu-right shadow mt-2">
                 <a class="dropdown-item">
                     {{ Auth::user()->name }}<br>
-                    <small class="text-muted">{{ Auth::user()->email }}</small>
+                    <small class="text-muted">{{ Auth::user()->role->description }}</small>
                 </a>
                 <a class="dropdown-item" href="{{ route('profile.index') }}">
                     <i class="fas fa-user"></i> Profile

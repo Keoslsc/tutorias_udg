@@ -21,5 +21,35 @@ class ModuleTableSeeder extends Seeder
         $module->name = 'Algoritmia';
         $module->division_id = '1';
         $module->save();
+
+        $module = new Module();
+        $module->name = 'Programacion I';
+        $module->division_id = '1';
+        $module->save();
+
+        $module = new Module();
+        $module->name = 'Programacion II';
+        $module->division_id = '1';
+        $module->save();
+
+        $module = new Module();
+        $module->name = 'Programacion III';
+        $module->division_id = '1';
+        $module->save();
+
+        $module = new Module();
+        $module->name = 'Matematicas I';
+        $module->division_id = '2';
+        $module->save();
+
+        $module = new Module();
+        $module->name = 'Matematicas II';
+        $module->division_id = '2';
+        $module->save();
+
+        $module = new Module();
+        $module->name = 'Matematicas III';
+        $module->division_id = '2';
+        $module->save();
     }
 }
