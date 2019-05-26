@@ -31,7 +31,7 @@
     @foreach ($division->modules as $module)
         @if($module->status)
             <div class="card" style="max-width: 18rem; min-height: 10rem;">
-                <div class="card-body justify-content-center pt-3 text-white" style="background-image: url({{asset('assets/images/utility/pl.png')}});">
+                <div class="card-body justify-content-center pt-3 text-white" style="background-image: url({{asset('assets/images/utility/placaTutor.png')}});">
                     <div class="card-header">
                         <h5 class="card-title text-white font-weight-bold text-center">{{ $module->name }}</h5>
                     </div>
