@@ -27,7 +27,8 @@ Route::get('verify/tutor', 'Auth\VerificationController@showTutor')->name('verif
 
 
 //Profile
-Route::resource('profile', 'ProfileController')->middleware('verified');
+Route::resource('profile', 'ProfileController', ['except' => ['show']])->middleware('verified');
+Route::get('profile/{user}', ['uses' => 'ProfileController@show'])->middleware('verified')->name('profile.show');
 
 //Division
 Route::resource('division', 'DivisionController',  ['except' => ['show']])->middleware('verified');
@@ -51,9 +52,16 @@ Route::post('post', ['uses' => 'PostController@store'])->middleware('verified')-
 Route::get('post/{post}', ['uses' => 'PostController@show'])->middleware('verified')->name('post.show');
 Route::get('post/delete/{post}', ['uses' => 'PostController@destroy'])->middleware('verified')->name('post.delete');
 Route::post('posts', 'PostController@postPost')->name('posts.post');
-//File
-Route::resource('file', 'FileController', ['except' => ['create', 'store', 'edit', 'update']]);
 
+//File
+Route::resource('file', 'FileController', ['except' => ['create', 'store', 'edit', 'update', 'delete']]);
+
+//Comment
+Route::resource('comment', 'CommentController', ['except' => ['index', 'show', 'create', 'edit', 'update']]);
+Route::get('comment/create/{post}', ['uses' => 'CommentController@create'])->name('comment.create')->middleware('verified');
+
+//Report 
+Route::get('report/{user}', ['uses' => 'ReportController@show'])->name('report.show')->middleware('verified');
 
 Auth::routes(['verify' => true]);
 
