@@ -39,7 +39,7 @@
                                 @if(isset($post->user->profile))
                                     <p class="m-0">{{ $post->user->profile->career->name }}</p>
                                 @endif
-                                <p class="text-muted mb-0">{{ $post->user->roles->first()->description }}</p>
+                                <p class="text-muted mb-0">{{ $post->user->role->description }}</p>
                             </div>
                         </div>
                     </div>
@@ -75,8 +75,21 @@
                         </div>
                     @endif
                 </div>
-                {<div class="card-footer">
-                    @include('comments.commentForm', $post)
+                <div class="card-footer">
+                    <form action="{{ route('comment.store') }}" method="POST">
+                        @csrf
+                        <div class="form-group">
+                            <input type="text" class="form-control{{ $errors->has('body') ? ' is-invalid' : '' }}" placeholder="Write your comment" value="{{ old('body') }}" name="body" id="body" required>
+                        </div>
+                        <input type="hidden" name="user_id" id="user_id" value="{{ Auth::user()->id }}">
+                        <input type="hidden" name="post_id" id="comment_id" value="{{ $post->id }}">                        
+                
+                        @if ($errors->has('body'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('body') }}</strong>
+                        </span>
+                        @endif
+                    </form>
                 </div>
                 <div class="pre-scrollable">
                         @foreach ($post->comments as $comment)
