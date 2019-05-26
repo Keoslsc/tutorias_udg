@@ -3,7 +3,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <a class="navbar-brand" href="{{ url('/') }}">
-        <img class="navbar-brand-full" src="{{asset('assets/images/utility/logo_tuudg.png')}}" width="45" height="45" alt="UDG Logo"> TU UDG
+        <img class="navbar-brand-full" src="{{asset('assets/images/utility/logo.png')}}" width="120" height="40" alt="UDG Logo">
         <img class="navbar-brand-minimized" src="" width="30" height="30" alt="UDG Logo">
     </a>
     <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">

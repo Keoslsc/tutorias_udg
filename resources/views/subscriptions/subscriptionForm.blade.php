@@ -2,8 +2,10 @@
     @foreach ($division->modules as $module)
         @if($module->status)
             <div class="card" style="max-width: 18rem; min-height: 10rem">
-                <div class="card-header">
-                    <h5 class="card-title text-center  text-truncate">{{ $module->name }}</h5>
+                <div class="card-body justify-content-center pt-3 text-white" style="background-image: url({{asset('assets/images/utility/placaStudent.png')}});">
+                    <div class="card-header">
+                        <h5 class="card-title text-white font-weight-bold text-center">{{ $module->name }}</h5>
+                    </div>
                 </div>
                 <div class="card-body">
                     @if ( count($user->modules->where('id', $module->id)) > 0 ) 
@@ -29,8 +31,10 @@
     @foreach ($division->modules as $module)
         @if($module->status)
             <div class="card" style="max-width: 18rem; min-height: 10rem;">
-                <div class="card-header">
-                    <h5 class="card-title text-center">{{ $module->name }}</h5>
+                <div class="card-body justify-content-center pt-3 text-white" style="background-image: url({{asset('assets/images/utility/pl.png')}});">
+                    <div class="card-header">
+                        <h5 class="card-title text-white font-weight-bold text-center">{{ $module->name }}</h5>
+                    </div>
                 </div>
                 <div class="card-body">
                     @if ( count($user->modules->where('id', $module->id)) > 0 ) 
