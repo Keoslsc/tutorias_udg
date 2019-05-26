@@ -5,6 +5,7 @@
         @if (isset($careers))
             <div class="row justify-content-center m-3">
                 <h3 class="text-center">Careers</h3>
+                @include('messages.messages')
                 <div class="table-responsive">
                     <table class="table table-bordered table-hover text-center">
                         <thead>
@@ -15,7 +16,7 @@
                                 <th>Description</th>
                                 <th>Status</th>
                                 <th>Edit</th>
-                                <th>Delete</th>
+                                <th>Ative / Inactive</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -25,7 +26,7 @@
                                     <td>{{ $career->created_at }}</td>
                                     <td>{{ $career->name }}</td>
                                     <td>{{ $career->division->description }}</td>
-                                    @if( $career->status === 1)
+                                    @if( $career->status == 1)
                                         <td><span class="badge badge-success">ACTIVE</span></td>
                                         <td><a class="btn btn-primary btn-block" href="{{ route('career.edit', $career->id) }}"><i class="icon-pencil"></i></a></td>
                                         <td>
@@ -38,7 +39,13 @@
                                     @else
                                         <td><span class="badge badge-danger">INACTIVE</span></td>
                                         <td><button type="button" class="btn btn-primary btn-block" disabled><i class="icon-pencil"></i></button></td>
-                                        <td><button type="button" class="btn btn-danger btn-block" disabled><i class="icon-trash"></i></button></td>
+                                        <td>
+                                            <form action="{{ route('career.destroy', $career->id) }}" method="POST">
+                                                    <input type="hidden" name="_method" value="DELETE">
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-success btn-block"><i class="icon-check"></i></button>
+                                            </form>
+                                        </td>
                                         
                                     @endif
                                     
@@ -47,6 +54,7 @@
                         </tbody>
                         
                     </table>
+                    {!! $careers->render() !!}
                 </div>
             </div>
         @else

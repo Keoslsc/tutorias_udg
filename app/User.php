@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Role;
+use App\Post;
 use QCod\ImageUp\HasImageUploads;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -41,7 +42,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'avatar', 'status'
+        'name', 'role_id', 'email', 'password', 'avatar', 'status'
     ];
 
     /**
@@ -62,49 +63,40 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
-    //Roles    
-    public function roles()
+
+    public function hasRole($role)
     {
-        return $this->belongsToMany('App\Role');
+        return $this->role->name === $role;
     }
 
     public function authorizeRoles($roles)
     {
-        if ($this->hasAnyRole($roles)) 
-        {
+        if ($this->hasAnyRole($roles)) {
             return true;
         }
-        abort(401, 'This action is not authorized.');
+        abort(403, 'This action is unauthorized.');
     }
 
     public function hasAnyRole($roles)
     {
-        if (is_array($roles)) 
-        {
-            foreach ($roles as $role) 
-            {
-                if ($this->hasRole($role)) 
-                {
+        if (is_array($roles)) {
+            foreach ($roles as $role) {
+                if ($this->hasRole($role)) {
                     return true;
                 }
             }
-        } 
-        else 
-        {
+        } else {
             if ($this->hasRole($roles)) {
                 return true;
             }
         }
         return false;
     }
-    
-    public function hasRole($role)
+
+    //Roles    
+    public function role()
     {
-        if ($this->roles()->where('name', $role)->first()) 
-        {
-            return true;
-        }
-        return false;
+        return $this->belongsTo('App\Role');
     }
 
     //Convocatories
@@ -129,6 +121,24 @@ class User extends Authenticatable implements MustVerifyEmail
     public function posts()
     {
         return $this->hasMany('App\Post');
+    }
+    
+    public function totalComments()
+    {
+        $comments = 0;
+        foreach ($this->posts as $post) {
+            $comments += $post->comments->count();
+        }
+        return $comments;
+    }
+
+    public function totalFiles()
+    {
+        $files = 0;
+        foreach ($this->posts as $post) {
+            $files += $post->files->count();
+        }
+        return $files;
     }
     
 }

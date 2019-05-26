@@ -3,10 +3,15 @@
 @section('content')
 <div class="m-3 container-fluid">
     <div class="row pb-3">
-        <div class="col-8 col-sm-8 col-md-9 col-lg-11 col-xl-11"></div>
-        <div class="col-4 col-sm-4 col-md-3 col-lg-1 col-xl-1">
-            <a href=" {{ route('module.show', $post->module) }} " class="btn btn-danger btn-block">Go back</a>
+
+        <div class="col-4 col-sm-4 col-md-6 col-lg-8 col-xl-8">
+
+        </div>
+        <div class="col-4 col-sm-4 col-md-3 col-lg-2 col-xl-2">
             
+        </div>
+        <div class="col-4 col-sm-4 col-md-3 col-lg-2 col-xl-2">
+            <a href=" {{ route('module.show', $post->module) }} " class="btn btn-danger btn-block">Go back</a>
         </div>
     </div>
     <div class="row justify-content-center">
@@ -29,9 +34,11 @@
                                 @if($post->user->id == Auth::user()->id)
                                     Me
                                 @else
-                                    By: <a href=" {{ route('profile.show', $post->user->id) }} "> <h5 class="m-0">{{ $post->user->name }}</h5> </a>
+                                     <a href=" {{ route('profile.show', $post->user->id) }} "> <h5 class="m-0">By: {{ $post->user->name }}</h5> </a>
                                 @endif
-                                <P class="m-0">{{ $post->user->profile->career->name }}</P>
+                                @if(isset($post->user->profile))
+                                    <p class="m-0">{{ $post->user->profile->career->name }}</p>
+                                @endif
                                 <p class="text-muted mb-0">{{ $post->user->roles->first()->description }}</p>
                             </div>
                         </div>
@@ -68,21 +75,32 @@
                         </div>
                     @endif
                 </div>
-                <div class="card-footer text-muted">                
-                    <form action="{{ route('posts.post') }}" method="POST">
-                    {{ csrf_field() }}
-                    @for ($i = 0; $i < round( $post->averageRating ,0); $i++)
-                                    <i class="fa fa-star fa-lg" style="color:#d8ca5d"></i>
-                                    @endfor
-                    @for ($i = round($post->averageRating,0); $i < 5 ;$i++)
-                                    <i class="fa fa-star fa-lg" style="color:#afac95"></i>
-                    @endfor
-                    {{number_format($post->averageRating, 1, '.', '')}}
-                        <input type="number" id="input" name="rate" min="1" max="5" style="width:3rem">                        
-                        <input type="hidden" name="id" required="" value="{{ $post->id }}">
-                        <button class="btn btn-success">Rate</button>
-                    <form>
+                {<div class="card-footer">
+                    @include('comments.commentForm', $post)
                 </div>
+                <div class="pre-scrollable">
+                        @foreach ($post->comments as $comment)
+                        <div class="card-footer">
+                            <div class="row">
+                                <div class="col-3 col-sm-3 col-md-2 col-lg-1 col-xl-1">
+                                    <img class="rounded-circle " src="{{ Storage::url($comment->user->avatar) }}" style="max-width: 100%;">
+                                </div>
+                                <div class="col-9 col-sm-3 col-md-10 col-lg-11 col-xl-11">
+                                    @if($comment->user->id == Auth::user()->id)
+                                        Me
+                                    @else
+                                        <a href=" {{ route('profile.show', $comment->user->id) }} "> <h5 class="m-0">{{ $comment->user->name }}</h5> </a>
+                                    @endif
+                                    
+                                    <p>{{ $comment->body }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+                
+
+
             </div>
         </div>
 

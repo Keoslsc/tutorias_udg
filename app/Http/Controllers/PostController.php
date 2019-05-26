@@ -28,6 +28,7 @@ class PostController extends Controller
         $request->user()->authorizeRoles(['tutor']);  
         $this->validatorStore($request->all())->validate();
         $post = new Post($request->all());
+        $this->authorize('subscribe', $post->module);
         $post->save();
         foreach ($request->file('files') as $file) {
             if ($file->isValid()) {
@@ -57,12 +58,14 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
+        $post->load(['comments', 'comments.user']);
         return view('posts.postShow', compact('post'));
     }
 
     public function destroy(Post $post)
     {
         $module = $post->module;
+        $this->authorize('subscribe', $post->module);
         $this->authorize('owner', $post);
         foreach ($post->files as $file) {
             Storage::delete($file->hashed);
@@ -87,13 +90,13 @@ class PostController extends Controller
     {  
         $post = Post::find($request->id);
         
-        if( $post->user_id === auth()->user()->id){
+        if( $post->user_id == auth()->user()->id){
             return \Redirect::route('post.show', $request->id)->with('error', 'You cannot rate your own post');
         }  
         
         $rateprev =  \willvincent\Rateable\Rating::where('user_id',auth()->user()->id)->where('rateable_id',$request->id)->first();
 
-        if($rateprev===null){
+        if($rateprev==null){
             request()->validate(['rate' => 'required']);        
             $rating = new \willvincent\Rateable\Rating;
             $rating->rating = $request->rate;

@@ -7,7 +7,6 @@
                     <i class="nav-icon icon-home"></i> Home
                 </a>
             </li>
-        
             @if(Auth::user()->hasRole('admin'))
             <!-- Admin -->
                 <li class="nav-item">
@@ -96,12 +95,14 @@
                 
             @elseif(Auth::user()->hasRole('tutor'))
             <!-- Tutor -->
-
-                
-
+                <li class="nav-item">
+                    <a class="nav-link active" href="{{ route('report.show', Auth::user()) }}">
+                        <i class="nav-icon icon-chart"></i> Generate Report
+                    </a>
+                </li>
             @else
             <!-- Student -->
-            @endif
+            @endcan
 
 
 

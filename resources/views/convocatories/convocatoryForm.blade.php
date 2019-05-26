@@ -59,7 +59,6 @@
                                         @endif
                                     </div>
                                 </div>
-
                                 <div class="col-5">
                                     <a href="{{ route('convocatory.index') }}" class="btn btn-danger btn-block">
                                             {{ __('Cancel') }}
@@ -71,7 +70,7 @@
                                             {{ __('Save') }}
                                     </button>
                                 </div>
-
+                                
                             </div>
                         
                         </div>

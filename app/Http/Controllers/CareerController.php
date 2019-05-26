@@ -28,7 +28,7 @@ class CareerController extends Controller
      */
     public function index()
     {
-        $careers = Career::with(['division'])->get();
+        $careers = Career::with(['division'])->paginate(10);
         return view('careers.careerIndex', compact('careers'));
     }
 
@@ -40,7 +40,7 @@ class CareerController extends Controller
     public function create(Request $request)
     {
         $request->user()->authorizeRoles(['admin']);  
-        $divisions = Division::all();
+        $divisions = Division::where('status', 1)->get();
         return view('careers.careerForm', compact('divisions'));
     }
 
@@ -56,7 +56,7 @@ class CareerController extends Controller
         $this->validatorStore($request->all())->validate();
         $career = new Career($request->all());
         $career->save();
-        return back()->with('success', 'Data inserted Successfully');
+        return redirect()->route('career.index')->with('success', 'Data inserted Successfully');
     }
 
     /**
@@ -94,7 +94,7 @@ class CareerController extends Controller
         $request->user()->authorizeRoles(['admin']);  
         $this->validatorStore($request->all())->validate();
         $career->fill($request->all())->save();
-        return redirect()->route('career.index');
+        return redirect()->route('career.index')->with('success', 'Data updated Successfully');
     }
 
     /**
@@ -106,9 +106,20 @@ class CareerController extends Controller
     public function destroy(Request $request, Career $career)
     {
         $request->user()->authorizeRoles(['admin']);  
-        $career->status = 0;
+        $response = '';
+        $message = '';
+        if($career->status){
+            $career->status = 0;
+            $response = 'error';
+            $message = 'You have deactivated the career correctly';
+        }
+        else{
+            $career->status = 1;
+            $response = 'success';
+            $message = 'You have activated the career correctly';
+        }
         $career->save();
-        return redirect()->route('career.index');
+        return redirect()->route('career.index')->with($response, $message);
     }
 
     protected function validatorStore(array $data)

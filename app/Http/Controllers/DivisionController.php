@@ -25,7 +25,7 @@ class DivisionController extends Controller
      */
     public function index()
     {
-        $divisions = Division::with(['modules'])->get();
+        $divisions = Division::with(['modules'])->paginate(10);
         return view('divisions.divisionIndex', compact('divisions'));
     }
 
@@ -58,7 +58,8 @@ class DivisionController extends Controller
         $this->validatorStore($request->all())->validate();
         $division = new Division($request->all());
         $division->save();
-        return back()->with('success', 'Data inserted Successfully');
+        $divisions = Division::with(['modules'])->get();
+        return redirect()->route('divisions.index')->with('success', 'Data inserted Successfully');
     }
 
     /**
@@ -80,6 +81,7 @@ class DivisionController extends Controller
      */
     public function edit(Division $division)
     {
+        $request->user()->authorizeRoles(['admin']);
         return view('divisions.divisionForm', compact('division'));
     }
 
@@ -95,7 +97,7 @@ class DivisionController extends Controller
         $request->user()->authorizeRoles(['admin']);  
         $this->validatorStore($request->all())->validate();
         $division->fill($request->all())->save();
-        return redirect()->route('division.index');
+        return redirect()->route('division.index')->with('success', 'Data updated Successfully');
     }
 
     /**
@@ -107,9 +109,20 @@ class DivisionController extends Controller
     public function destroy(Request $request, Division $division)
     {
         $request->user()->authorizeRoles(['admin']);  
-        $division->status = 0;
+        $response = '';
+        $message = '';
+        if($division->status){
+            $division->status = 0;
+            $response = 'error';
+            $message = 'You have deactivated the division correctly';
+        }
+        else{
+            $response = 'success';
+            $message = 'You have activated the division correctly';
+            $division->status = 1;
+        }
         $division->save();
-        return redirect()->route('division.index');
+        return redirect()->route('division.index')->with($response, $message);
     }
 
 

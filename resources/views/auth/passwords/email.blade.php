@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('auth')
-    <div class="container">
+    <div class="m-3 container">
         <div class="row justify-content-center">
             <div class="col-md-5">
                 <form method="POST" action="{{  route('password.email') }}" class="card">
