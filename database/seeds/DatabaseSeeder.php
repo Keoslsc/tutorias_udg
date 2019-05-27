@@ -16,6 +16,5 @@ class DatabaseSeeder extends Seeder
         $this->call(DivisionTableSeeder::class);
         $this->call(CareerTableSeeder::class);
         $this->call(ModuleTableSeeder::class);
-        factory(Module::class, 5)->create();
     }
 }
