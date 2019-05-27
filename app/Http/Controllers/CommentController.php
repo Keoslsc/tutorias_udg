@@ -48,4 +48,8 @@ class CommentController extends Controller
             'user_id' => ['required', 'exists:users,id']
         ]);
     }
+    public function scopeCommentInThisMonth($query)
+    {
+        return $query->whereMonth('created_at', now()->month);
+    }
 }

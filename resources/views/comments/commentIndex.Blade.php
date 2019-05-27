@@ -15,6 +15,7 @@
                                 <th>Body</th>
                                 <th>Module</th>
                                 <th>Soft Delete</th>
+                                <th>$okay = Comment::CommentInThisMonth()->get();</th>
                             </tr>
                         </thead>
                         <tbody>
