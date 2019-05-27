@@ -6,10 +6,10 @@ use App\Module;
 use App\Division;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use \Illuminate\Database\Eloquent\Model;
 
 class ModuleController extends Controller
 {
-
     /**
      * Create a new controller instance.
      *
@@ -122,6 +122,11 @@ class ModuleController extends Controller
         
         $module->save();
         return redirect()->route('module.index')->with($response, $message);
+    }
+
+    public function scopeOnlyTrashed($query)
+    {
+        return $query->where('status', 0);
     }
 
     protected function validatorStore(array $data)
