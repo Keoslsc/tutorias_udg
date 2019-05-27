@@ -28,12 +28,16 @@ class CommentController extends Controller
         $post = $comment->post;
         return redirect()->route('post.show', compact('post'))->with('success', 'Your comment was made.');
     }
+    public function index()
+    {
+        $comments = Comment::with(['user'])->paginate(10);
+        return view('comments.commentIndex', compact('comments'));
+    }
     public function destroy($id)
     {
         $comment = Comment::find($id);
         $comment->delete();
-        Session::flash('message','Comment deleted sucessfully');
-        //return Redirect::to()
+        return redirect()->route('comment.index', compact('comment'))->with('success', 'Your comment was deleted.');
     }
 
     protected function validatorStore(array $data)
