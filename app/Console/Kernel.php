@@ -14,6 +14,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         'App\Console\Commands\DeleteUsers',
+        'App\Console\Commands\LogDemo',
     ];
 
     /**
@@ -24,8 +25,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('delete:users')->cron('10,3,3,4,*');
-
+        $schedule->command('log:demo')->everyMinute();
     }
 
     /**
