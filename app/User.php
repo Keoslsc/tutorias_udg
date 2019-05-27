@@ -54,6 +54,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'password', 'remember_token',
     ];
 
+    protected $dates = ['deleted_at'];
+
     /**
      * The attributes that should be cast to native types.
      *

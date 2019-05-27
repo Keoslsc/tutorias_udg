@@ -91,6 +91,19 @@
                     </ul>
                 </li>
 
+                <!-- Comments -->
+                <li class="nav-item nav-dropdown">
+                    <a class="nav-link nav-dropdown-toggle" href="#"><i class="nav-icon icon-note"></i> Comments</a>
+                    <ul class="nav-dropdown-items">
+
+                        <!-- View -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('comment.index') }}">
+                            <i class="nav-icon icon-list"></i> View list</a>
+                        </li>
+                    </ul>
+                </li>
+
 
                 
             @elseif(Auth::user()->hasRole('tutor'))

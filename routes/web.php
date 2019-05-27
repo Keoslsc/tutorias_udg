@@ -57,7 +57,7 @@ Route::post('posts', 'PostController@postPost')->name('posts.post');
 Route::resource('file', 'FileController', ['except' => ['create', 'store', 'edit', 'update', 'delete']]);
 
 //Comment
-Route::resource('comment', 'CommentController', ['except' => ['index', 'show', 'create', 'edit', 'update']]);
+Route::resource('comment', 'CommentController', ['except' => ['show', 'create', 'edit', 'update']]);
 Route::get('comment/create/{post}', ['uses' => 'CommentController@create'])->name('comment.create')->middleware('verified');
 
 //Report 
