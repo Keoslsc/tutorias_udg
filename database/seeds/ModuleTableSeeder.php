@@ -3,6 +3,8 @@
 use App\Module;
 use Illuminate\Database\Seeder;
 
+factory(Module::class, 3)->create();
+
 class ModuleTableSeeder extends Seeder
 {
     /**

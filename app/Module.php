@@ -9,7 +9,9 @@ class Module extends Model
     protected $fillable = [
         'id', 'name', 'division_id', 'status', 'created_at', 'updated_at'
     ];
-
+    public function getNameAttribute($value){
+        return ucwords($value);
+    }
     //Division
     public function division()
     {
