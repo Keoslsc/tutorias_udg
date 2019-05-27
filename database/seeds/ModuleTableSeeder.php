@@ -2,8 +2,7 @@
 
 use App\Module;
 use Illuminate\Database\Seeder;
-
-factory(Module::class, 3)->create();
+use Illuminate\Database\Eloquent\Model;
 
 class ModuleTableSeeder extends Seeder
 {
@@ -12,8 +11,11 @@ class ModuleTableSeeder extends Seeder
      *
      * @return void
      */
+
     public function run()
     {
+        factory(Module::class, 3)->create();
+
         $module = new Module();
         $module->name = 'Ecuaciones Diferenciales Ordinarias';
         $module->division_id = '1';
@@ -78,5 +80,6 @@ class ModuleTableSeeder extends Seeder
         $module->name = 'Matematicas III';
         $module->division_id = '2';
         $module->save();
+
     }
 }
