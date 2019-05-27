@@ -28,7 +28,13 @@ class CommentController extends Controller
         $post = $comment->post;
         return redirect()->route('post.show', compact('post'))->with('success', 'Your comment was made.');
     }
-
+    public function destroy($id)
+    {
+        $comment = Comment::find($id);
+        $comment->delete();
+        Session::flash('message','Comment deleted sucessfully');
+        //return Redirect::to()
+    }
 
     protected function validatorStore(array $data)
     {

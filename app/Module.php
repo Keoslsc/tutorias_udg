@@ -1,7 +1,7 @@
 <?php
 
 namespace App;
-
+use Illuminate\Database\Eloquent\SoftDelete;
 use Illuminate\Database\Eloquent\Model;
 
 class Module extends Model
@@ -12,6 +12,7 @@ class Module extends Model
     public function getNameAttribute($value){
         return ucwords($value);
     }
+    protected $dates = ['deleted_at'];
     //Division
     public function division()
     {
